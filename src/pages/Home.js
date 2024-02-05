@@ -5,10 +5,8 @@ const Home = () => {
   const {user} = useAuthContext()
 
   return (
-    <div className="home">
-         <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
+    <div className="w-20 h-300 bg-red">
+
     </div>
   )
 }
