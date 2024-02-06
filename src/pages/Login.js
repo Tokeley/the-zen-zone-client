@@ -12,26 +12,41 @@ const Login = () => {
     await login(email, password)
   }
 
-  return (    
-    <form className="login" onSubmit={handleSubmit}>
-      <h3>Log In</h3>
-      
-      <label>Email address:</label>
-      <input 
-        type="email" 
-        onChange={(e) => setEmail(e.target.value)} 
-        value={email} 
-      />
-      <label>Password:</label>
-      <input 
-        type="password" 
-        onChange={(e) => setPassword(e.target.value)} 
-        value={password} 
-      />
+  return (   
+    <div className="flex items-center justify-center pt-20 ">
+      <form className="w-96 bg-cream px-8 pt-6 pb-8 border-2" onSubmit={handleSubmit}>
+        <h3 className="text-4xl font-bold mb-4 text-gray">Log In</h3>
 
-      <button disabled={isLoading}>Log in</button>
-      {error && <div className="error">{error}</div>}
-    </form>
+        <label className="block text-gray text-sm font-bold mb-2">Email address:</label>
+        <input
+          type="email"
+          className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+
+        <label className="block text-gray text-sm font-bold mt-4 mb-2">Password:</label>
+        <input
+          type="password"
+          className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <div className="flex items-center justify-center pt-5">
+          <button
+            className="btn"
+            type="submit"
+            disabled={isLoading}
+          > 
+            Log in
+          </button>
+        </div>
+        
+        
+        {error && <div className="text-red-500 mt-2">{error}</div>}
+      </form>
+    </div>
+    
   )
 }
 

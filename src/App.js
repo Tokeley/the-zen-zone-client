@@ -1,8 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useState } from 'react'
 import { useAuthContext } from './hooks/useAuthContext'
 
 // pages & components
 import Home from './pages/Home'
+import Ambiences from './pages/Ambiences'
+import Favourites from './pages/Favourites'
+import About from './pages/About'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Navbar from './components/Navbar'
@@ -13,11 +17,24 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar/>
         <div className="pages">
           <Routes>
             <Route 
               path="/" 
+              element={<Home/>} 
+            />
+            <Route
+              path="/ambiences" 
+              element={<Ambiences />} 
+            />
+            <Route
+              path="/favourites" 
+              element={user ? <Favourites /> : <Login/>} 
+            />
+            <Route
+              path="/about" 
+              element={<About />} 
             />
             <Route 
               path="/login" 
