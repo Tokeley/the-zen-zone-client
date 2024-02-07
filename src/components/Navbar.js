@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="bg-cream fixed text-gray w-full md:flex py-3 px-8 border-b-2 " ref={header}>
+      <div className="bg-cream text-gray w-full md:flex py-3 px-8 border-b-2 " ref={header}>
         <div class=" hidden items-center justify-normal w-full md:flex">
           <ul class="flex">
               <div class="group">

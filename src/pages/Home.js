@@ -20,13 +20,13 @@ const Home = ({navbarHeight}) => {
         dispatch({type: 'ADD_SOUND', payload: json})
       }
     }
+    
     fetchRandomAmbience();
-
   
   }, [])
 
   return (
-      <div style={{height: `calc(100vh - ${navHeight}px)`, display: "flex", position: "fixed", top: `${navHeight}px`, width: "100%"}}>
+      <div style={{height: `calc(100vh - ${navHeight}px)`, display: "flex", width: "100%"}}>
         {ambiences && ambiences.map((ambience) => (
           <AmbienceUnit ambience={ambience} style={{width: "100%"}}/>
         ))}
