@@ -23,18 +23,17 @@ const AmbienceUnit = ({ ambience }) => {
     const imageUrl= require(`../images/${ambience.imagePath}`);
     const audioUrl = require(`../ambiences/${ambience.audioPath}`);
 
-    console.log(ambience.title + " " + audioUrl);
+    
 
     const [volumeArray, setVolumeArray] = useState([0.5, 1]);
     const [prevVol, setPrevVolume] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [mute, setMute] = useState(false);
-    const [play] = useSound(audioUrl, {
+    const [play, { sound }] = useSound(audioUrl, {
         volume: volume,
-        onend: () => {
-            play();
-        },
-    });
+        loop: true
+      });
+
 
     useEffect(() => {
         setVolume(1 - volumeArray[0]);

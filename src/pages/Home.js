@@ -29,7 +29,7 @@ const Home = ({navbarHeight}) => {
   return (
       <div style={{height: `calc(100vh - ${navHeight}px)`, display: "flex", width: "100%"}}>
         {ambiences && ambiences.map((ambience) => (
-          <AmbienceUnit ambience={ambience} style={{width: "100%"}}/>
+          <AmbienceUnit key={ambience._id} ambience={ambience} style={{width: "100%"}}/>
         ))}
       </div>
   )
