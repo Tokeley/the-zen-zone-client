@@ -4,6 +4,7 @@ import useSound from 'use-sound';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import '../style.css';
+import AmbienceOptions from './AmbienceOptions';
 
 const buttonStyles = {
     padding: '12px 24px',
@@ -33,8 +34,14 @@ const AmbienceUnit = ({ ambience }) => {
         volume: volume,
         loop: true
       });
+      console.log();
 
+    useEffect(() => {
+    // Play the audio once when the component mounts
+    play();
+    }, []);
 
+    
     useEffect(() => {
         setVolume(1 - volumeArray[0]);
       }, [volumeArray]);
@@ -53,10 +60,6 @@ const AmbienceUnit = ({ ambience }) => {
         setVolumeArray(event);
       };
     
-      const handleMuteButton = () => {
-        setMute(!mute);
-      };
-
     const backgroundStyle = {
         backgroundImage: `url(${imageUrl})`,
         backgroundSize: 'cover',
@@ -66,19 +69,7 @@ const AmbienceUnit = ({ ambience }) => {
 
     return (
         <div className="h-full flex flex-col justify-center items-center" style={backgroundStyle}>
-            
-            <button
-                onClick={play}
-                style={{ ...buttonStyles }}
-                onMouseEnter={() => {
-                document.body.style.cursor = 'pointer';
-                }}
-                onMouseLeave={() => {
-                document.body.style.cursor = 'auto';
-                }}
-            >
-                Play Sound
-            </button>
+            <h1 className='font-titleFont text-3xl'>{ambience.title.toUpperCase()}</h1> 
             <div style={{ width: '25%'}}>
                 <RangeSlider
                 className="single-thumb"
@@ -92,12 +83,7 @@ const AmbienceUnit = ({ ambience }) => {
                 onInput={handleInputChange}
                 />
             </div>
-            <button
-                onClick={handleMuteButton}
-                style={{ ...buttonStyles, marginTop: '20px' }}
-            >
-                {mute ? 'Unmute' : 'Mute'}
-            </button>
+            <AmbienceOptions/>
         </div>
     );
 };

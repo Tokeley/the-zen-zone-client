@@ -1,6 +1,4 @@
-body {
-    background-color: #f0f0f0;
-  }
+
   
   .title {
     user-select: none;
@@ -163,15 +161,18 @@ body {
     height: 20px;
     border-radius: 0px;
     background-color: #5e5955;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   .single-thumb .range-slider__range {
     border-radius: 0px;
     background-color: #88807B;
+   
   }
   
   .single-thumb{
     border-radius: 0px;
     background-color: #88807B;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   /* Vertical Range Slider */
   .single-thumb[data-vertical] {
