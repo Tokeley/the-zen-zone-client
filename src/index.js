@@ -5,15 +5,18 @@ import App from './App';
 import { AuthContextProvider } from './context/AuthContext'
 import { AmbiencesContextProvider } from './context/AmbiencesContext';
 import { NavbarHeightContextProvider } from './context/NavbarHeightContext';
+import { SoundContextProvider } from './context/SoundContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NavbarHeightContextProvider>
       <AmbiencesContextProvider>
-        <AuthContextProvider>
-            <App />
-        </AuthContextProvider>
+        <SoundContextProvider>
+          <AuthContextProvider>
+              <App />
+          </AuthContextProvider>
+        </SoundContextProvider>
       </AmbiencesContextProvider>
     </NavbarHeightContextProvider>
   </React.StrictMode>

@@ -5,6 +5,7 @@ import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import '../style.css';
 import AmbienceOptions from './AmbienceOptions';
+import { useSoundContext } from '../hooks/useSoundContext';
 
 const buttonStyles = {
     padding: '12px 24px',
@@ -24,22 +25,24 @@ const AmbienceUnit = ({ ambience }) => {
     const imageUrl= require(`../images/${ambience.imagePath}`);
     const audioUrl = require(`../ambiences/${ambience.audioPath}`);
 
-    
+    const { playing } = useSoundContext();
 
     const [volumeArray, setVolumeArray] = useState([0.5, 1]);
     const [prevVol, setPrevVolume] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [mute, setMute] = useState(false);
-    const [play, { sound }] = useSound(audioUrl, {
+    const [play, { sound, pause}] = useSound(audioUrl, {
         volume: volume,
         loop: true
       });
-      console.log();
 
     useEffect(() => {
-    // Play the audio once when the component mounts
-    play();
-    }, []);
+    if (playing) {
+      play();
+    } else {
+      pause();
+    }
+    }, [playing]);
 
     
     useEffect(() => {

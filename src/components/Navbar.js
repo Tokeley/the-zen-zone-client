@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
+import { useSoundContext } from '../hooks/useSoundContext';
 
 const PlayIcon = () => {
   return (
@@ -22,21 +23,28 @@ const PauseIcon = () => {
 }
 
 const Navbar = () => {
-  const { logout } = useLogout()
-  const { user } = useAuthContext()
-  const { dispatch} = useNavbarHeightContext()
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+  const { dispatch} = useNavbarHeightContext();
+  const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
   const [playing, setPlaying] = useState(false);
   let header = useRef(null);
 
   useEffect(() => {
-    console.log("header: "+header.current.offsetHeight);
     dispatch({type: 'SET_NAVBAR_HEIGHT', payload: header.current.offsetHeight});
+    setPlaying(contextPlaying);
   },[]);
 
   const handleLogout = () => {
     logout()
   }
 
+  const handlePlayBittonClick = () => {
+    soundDispatch({type: 'SET_PLAYING', payload: !playing});
+    setPlaying(!playing);
+  }
+
+  
 
   return (
     <header>
@@ -88,7 +96,7 @@ const Navbar = () => {
               <span className="font-titleFont text-6xl md:pl-3">TheZenZone</span>
             </Link>
           </div>
-          <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={() => {setPlaying(!playing)}}>
+          <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayBittonClick}>
             {
               playing ? <PauseIcon/> : <PlayIcon/>
             }

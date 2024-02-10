@@ -2,11 +2,10 @@ import { useEffect }from 'react'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import {useAmbiencesContext} from "../hooks/useAmbiencesContext"
-
 import AmbienceUnit from '../components/AmbienceUnit'
 
 
-const Home = ({navbarHeight}) => {
+const Home = () => {
   const {user} = useAuthContext()
   const {ambiences, dispatch} = useAmbiencesContext()
   const {navHeight} = useNavbarHeightContext()
