@@ -1,13 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 
+const PlayIcon = () => {
+  return (
+    <svg className="w-11" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"></path>
+    </svg>
+  );
+}
+
+const PauseIcon = () => {
+  return (
+    <svg className="w-11" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9v6m-4.5 0V9M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+  </svg>
+  );
+}
+
 const Navbar = () => {
   const { logout } = useLogout()
   const { user } = useAuthContext()
   const { dispatch} = useNavbarHeightContext()
+  const [playing, setPlaying] = useState(false);
   let header = useRef(null);
 
   useEffect(() => {
@@ -59,7 +77,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex w-full justify-between md:justify-center">
+        <div className="flex w-full justify-between items-center md:justify-center">
           <div className="md:hidden">
             <svg className="w-14" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
@@ -69,6 +87,11 @@ const Navbar = () => {
             <Link to="/">
               <span className="font-titleFont text-6xl md:pl-3">TheZenZone</span>
             </Link>
+          </div>
+          <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={() => {setPlaying(!playing)}}>
+            {
+              playing ? <PauseIcon/> : <PlayIcon/>
+            }
           </div>
           <div className="w-10 h-10md:hidden">
           </div>
