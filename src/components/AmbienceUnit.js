@@ -6,6 +6,7 @@ import 'react-range-slider-input/dist/style.css';
 import '../style.css';
 import AmbienceOptions from './AmbienceOptions';
 import { useSoundContext } from '../hooks/useSoundContext';
+import { useAmbiencesContext } from '../hooks/useAmbiencesContext'
 
 const buttonStyles = {
     padding: '12px 24px',
@@ -26,6 +27,7 @@ const AmbienceUnit = ({ ambience }) => {
     const audioUrl = require(`../ambiences/${ambience.audioPath}`);
 
     const { playing } = useSoundContext();
+    const { dispatch } = useAmbiencesContext();
 
     const [volumeArray, setVolumeArray] = useState([0.5, 1]);
     const [prevVol, setPrevVolume] = useState(0);
@@ -35,14 +37,6 @@ const AmbienceUnit = ({ ambience }) => {
         volume: volume,
         loop: true
       });
-
-    useEffect(() => {
-    if (playing) {
-      play();
-    } else {
-      pause();
-    }
-    }, [playing]);
 
     
     useEffect(() => {
@@ -62,6 +56,11 @@ const AmbienceUnit = ({ ambience }) => {
       const handleInputChange = (event) => {
         setVolumeArray(event);
       };
+
+      const removeAmbience = () => {
+        console.log("REMOVE");
+        dispatch({type: 'REMOVE_SOUND', payload: ambience})
+      }
     
     const backgroundStyle = {
         backgroundImage: `url(${imageUrl})`,
@@ -86,7 +85,7 @@ const AmbienceUnit = ({ ambience }) => {
                 onInput={handleInputChange}
                 />
             </div>
-            <AmbienceOptions/>
+            <AmbienceOptions play = {play} pause={pause} removeAmbience={removeAmbience}/>
         </div>
     );
 };
