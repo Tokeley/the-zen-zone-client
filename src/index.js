@@ -9,7 +9,6 @@ import { SoundContextProvider } from './context/SoundContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <NavbarHeightContextProvider>
       <AmbiencesContextProvider>
         <SoundContextProvider>
@@ -19,5 +18,4 @@ root.render(
         </SoundContextProvider>
       </AmbiencesContextProvider>
     </NavbarHeightContextProvider>
-  </React.StrictMode>
 );

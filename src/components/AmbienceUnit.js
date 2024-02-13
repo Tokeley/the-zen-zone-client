@@ -33,7 +33,7 @@ const AmbienceUnit = ({ ambience }) => {
     const [prevVol, setPrevVolume] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [mute, setMute] = useState(false);
-    const [play, { sound, pause}] = useSound(audioUrl, {
+    const [play, { sound, pause, stop}] = useSound(audioUrl, {
         volume: volume,
         loop: true
       });
@@ -58,7 +58,7 @@ const AmbienceUnit = ({ ambience }) => {
       };
 
       const removeAmbience = () => {
-        console.log("REMOVE");
+        stop();
         dispatch({type: 'REMOVE_SOUND', payload: ambience})
       }
     
