@@ -6,6 +6,7 @@ import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon } from './Icons';
 
+
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
@@ -17,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     dispatch({type: 'SET_NAVBAR_HEIGHT', payload: header.current.offsetHeight});
     setPlaying(contextPlaying);
-  },[]);
+  },[contextPlaying, dispatch ]);
 
   const handleLogout = () => {
     logout()
@@ -45,7 +46,7 @@ const Navbar = () => {
 
               <div class="group">
                 <div className="flex items-center">
-                  <EmptyFavIcon size={6}/>
+                  <EmptyFavIcon size={6} strokewidth={1.5}/>
                   <a href="favourites" class="block py-2 px-3 text-lg">Favourites</a>
                 </div>
                 <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>

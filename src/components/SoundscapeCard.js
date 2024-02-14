@@ -1,14 +1,24 @@
 import React from 'react'
 import { EmptyFavIcon, FullFavIcon, AddIcon } from './Icons';
 import {useSoundscapesContext} from "../hooks/useSoundscapesContext"
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const SoundscapeCard = ({soundscape}) => {
   const imageUrl= require(`../images/${soundscape.imagePath}`);
   const {dispatch} = useSoundscapesContext();
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     dispatch({type: 'ADD_SOUND', payload: soundscape})
   }
+
+  const handleFavClick = () => {
+    if (!user){
+        navigate("/login");
+    }
+}
 
   const backgroundStyle = {
     backgroundImage: `url(${imageUrl})`,
@@ -22,8 +32,8 @@ const SoundscapeCard = ({soundscape}) => {
       <div className="flex justify-between items-center mt-3">
         <span className="font-titleFont text-3xl m-0 p-0">{soundscape.title}</span>
         <div className="flex items-center">
-          <div>
-            <EmptyFavIcon size={10}/>
+          <div onClick={handleFavClick}>
+            <EmptyFavIcon size={10} strokewidth={1}/>
           </div>
           <div onClick={handleAdd}>
             <AddIcon size={10}/>
