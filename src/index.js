@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext'
-import { AmbiencesContextProvider } from './context/AmbiencesContext';
+import { SoundscapesContextProvider } from './context/SoundscapesContext';
 import { NavbarHeightContextProvider } from './context/NavbarHeightContext';
 import { SoundContextProvider } from './context/SoundContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <NavbarHeightContextProvider>
-      <AmbiencesContextProvider>
+      <SoundscapesContextProvider>
         <SoundContextProvider>
           <AuthContextProvider>
               <App />
           </AuthContextProvider>
         </SoundContextProvider>
-      </AmbiencesContextProvider>
+      </SoundscapesContextProvider>
     </NavbarHeightContextProvider>
 );

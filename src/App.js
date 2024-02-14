@@ -4,7 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 
 // pages & components
 import Home from './pages/Home'
-import Ambiences from './pages/Ambiences'
+import Soundscapes from './pages/Soundscapes'
 import Favourites from './pages/Favourites'
 import About from './pages/About'
 import Login from './pages/Login'
@@ -25,8 +25,8 @@ function App() {
               element={<Home/>} 
             />
             <Route
-              path="/ambiences" 
-              element={<Ambiences />} 
+              path="/soundscapes" 
+              element={<Soundscapes />} 
             />
             <Route
               path="/favourites" 

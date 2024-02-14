@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { PlayIcon, PauseIcon, TrashIcon, EmptyFavIcon } from './Icons';
 
 
-const AmbienceOptions = ({ play, pause, removeAmbience}) => {
+const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
     const [ thisPlating, setThisPlaying ] = useState(true);
     const { playing } = useSoundContext();
     const { user } = useAuthContext();
@@ -18,7 +18,7 @@ const AmbienceOptions = ({ play, pause, removeAmbience}) => {
         }
     },[thisPlating, playing]);
 
-    const iconSize = 8;
+    const iconSize = 10;
   return (
     <div className="grid grid-cols-3 gap-4">
         <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 ">
@@ -27,12 +27,12 @@ const AmbienceOptions = ({ play, pause, removeAmbience}) => {
         <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlating)}>
          {thisPlating ? <PauseIcon size={iconSize}/> : <PlayIcon size={iconSize}/>}
         </div>
-        <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeAmbience}>
+        <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
             <TrashIcon size={iconSize}/>
         </div>
     </div>
   );
 };
 
-export default AmbienceOptions;
+export default SoundscapeOptions;
 

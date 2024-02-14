@@ -4,9 +4,9 @@ import useSound from 'use-sound';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import '../style.css';
-import AmbienceOptions from './AmbienceOptions';
+import SoundscapeOptions from './SoundscapeOptions';
 import { useSoundContext } from '../hooks/useSoundContext';
-import { useAmbiencesContext } from '../hooks/useAmbiencesContext'
+import { useSoundscapesContext } from '../hooks/useSoundscapesContext'
 
 const buttonStyles = {
     padding: '12px 24px',
@@ -22,12 +22,12 @@ const buttonStyles = {
   };
   
 
-const AmbienceUnit = ({ ambience }) => {
-    const imageUrl= require(`../images/${ambience.imagePath}`);
-    const audioUrl = require(`../ambiences/${ambience.audioPath}`);
+const SoundscapeUnit = ({ soundscape }) => {
+    const imageUrl= require(`../images/${soundscape.imagePath}`);
+    const audioUrl = require(`../soundscapes/${soundscape.audioPath}`);
 
     const { playing } = useSoundContext();
-    const { dispatch } = useAmbiencesContext();
+    const { dispatch } = useSoundscapesContext();
 
     const [volumeArray, setVolumeArray] = useState([0.5, 1]);
     const [prevVol, setPrevVolume] = useState(0);
@@ -57,9 +57,9 @@ const AmbienceUnit = ({ ambience }) => {
         setVolumeArray(event);
       };
 
-      const removeAmbience = () => {
+      const removeSoundscape = () => {
         stop();
-        dispatch({type: 'REMOVE_SOUND', payload: ambience})
+        dispatch({type: 'REMOVE_SOUND', payload: soundscape})
       }
     
     const backgroundStyle = {
@@ -71,7 +71,7 @@ const AmbienceUnit = ({ ambience }) => {
 
     return (
         <div className="h-full flex flex-col justify-center items-center" style={backgroundStyle}>
-            <h1 className='font-titleFont text-3xl'>{ambience.title.toUpperCase()}</h1> 
+            <h1 className='font-titleFont text-3xl'>{soundscape.title.toUpperCase()}</h1> 
             <div style={{ width: '25%'}}>
                 <RangeSlider
                 className="single-thumb"
@@ -85,9 +85,9 @@ const AmbienceUnit = ({ ambience }) => {
                 onInput={handleInputChange}
                 />
             </div>
-            <AmbienceOptions play = {play} pause={pause} removeAmbience={removeAmbience}/>
+            <SoundscapeOptions play = {play} pause={pause} removeSoundscape={removeSoundscape}/>
         </div>
     );
 };
 
-export default AmbienceUnit;
+export default SoundscapeUnit;

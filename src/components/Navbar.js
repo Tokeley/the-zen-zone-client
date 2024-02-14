@@ -38,7 +38,7 @@ const Navbar = () => {
               <div class="group">
                 <div className="flex items-center">
                   <SparkleIcon size={6}/>
-                  <a href="ambiences" class="block py-2 px-3 text-lg">Ambiences</a>
+                  <a href="soundscapes" class="block py-2 px-3 text-lg">Soundscapes</a>
                 </div>
                 <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
               </div>
@@ -105,8 +105,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-
-
         </div>
     </header>
   )
