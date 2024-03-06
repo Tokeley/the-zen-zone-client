@@ -33,10 +33,10 @@ const SoundscapeCard = ({soundscape}) => {
         <span className="font-titleFont text-3xl m-0 p-0">{soundscape.title}</span>
         <div className="flex items-center">
           <div onClick={handleFavClick}>
-            <EmptyFavIcon size={10} strokewidth={1}/>
+            <EmptyFavIcon size={40} strokewidth={1}/>
           </div>
           <div onClick={handleAdd}>
-            <AddIcon size={10}/>
+            <AddIcon size={40}/>
           </div>
         </div>
       </div>

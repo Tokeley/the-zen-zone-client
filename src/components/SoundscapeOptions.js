@@ -20,7 +20,7 @@ const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
         }
     },[thisPlating, playing, play, pause]);
 
-    const iconSize = 10;
+    const iconSize = 40;
 
     const handleFavClick = () => {
         if (!user){
@@ -28,7 +28,7 @@ const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
         }
     }
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="flex justify-between w-full px-2 md:px-6">
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
             <EmptyFavIcon size={iconSize} strokewidth={1.5}/>
         </div>
