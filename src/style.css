@@ -183,3 +183,23 @@
     margin-bottom: 0%;
   }
   
+.dropdownItems {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+
+}
+
+.dropdownItems.is-open {
+  max-height: 100%;
+}
+
+.navbar {
+  max-height: auto;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.navbar.is-open {
+  max-height: 100%;
+}

@@ -20,7 +20,7 @@ const Desktopnavbar = () => {
       logout()
     }
   
-    const handlePlayBittonClick = () => {
+    const handlePlayButtonClick = () => {
       soundDispatch({type: 'SET_PLAYING', payload: !playing});
       setPlaying(!playing);
     }
@@ -63,7 +63,7 @@ const Desktopnavbar = () => {
               <span className="font-titleFont text-5xl pl-3">TheZenZone</span>
             </Link>
           </div>
-          <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayBittonClick}>
+          <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayButtonClick}>
             {
               playing ? <PauseIcon size={20}/> : <PlayIcon size={50}/>
             }

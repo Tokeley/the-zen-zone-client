@@ -16,6 +16,8 @@ const Navbar = () => {
   const { dispatch} = useNavbarHeightContext();
   const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
   const [playing, setPlaying] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   let header = useRef(null);
 
   useEffect(() => {
@@ -27,21 +29,22 @@ const Navbar = () => {
     logout()
   }
 
+
   const handlePlayBittonClick = () => {
     soundDispatch({type: 'SET_PLAYING', payload: !playing});
     setPlaying(!playing);
   }
 
-  
+  console.log("Menu open:" + menuOpen);
 
   return (
     <header>
-      <div className="bg-cream text-gray border-b-2 " ref={header}>
+      <div className={`bg-cream text-gray border-b-2`} ref={header}>
         <div className="hidden md:flex">
           <DesktopNavbar/>
         </div>
         <div className="flex md:hidden">
-          <MobileNavbar/>
+          <MobileNavbar setMenuOpenNav={setMenuOpen}/>
         </div>
       </div>
     </header>
