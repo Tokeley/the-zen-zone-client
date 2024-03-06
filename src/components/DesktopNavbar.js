@@ -65,7 +65,7 @@ const Desktopnavbar = () => {
           </div>
           <div className="ml-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayButtonClick}>
             {
-              playing ? <PauseIcon size={20}/> : <PlayIcon size={50}/>
+              playing ? <PauseIcon size={50}/> : <PlayIcon size={50}/>
             }
           </div>
           <div className="w-10 h-10md:hidden">
@@ -85,12 +85,16 @@ const Desktopnavbar = () => {
         )}
         {!user && (
           <div className="flex">
-            <a href="login" className="btn">
-              Log-in
-            </a>
-            <a href="signup" className="btn">
-              Sign-up
-            </a>
+            <div className="mr-1">
+              <a href="login" className="btn">
+                  Log-in
+              </a>
+          </div>
+          <div className="ml-1">
+              <a href="signup" className="btn">
+                  Sign-up
+              </a>
+          </div>
           </div>
         )}
       </div>

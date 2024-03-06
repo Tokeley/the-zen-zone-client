@@ -2,23 +2,23 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useSoundContext } from '../hooks/useSoundContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { PlayIcon, PauseIcon, Xmark, EmptyFavIcon } from './Icons';
+import { SoundOn, SoundOff, Xmark, EmptyFavIcon } from './Icons';
 import { useNavigate } from "react-router-dom";
 
 
 const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
-    const [ thisPlating, setThisPlaying ] = useState(true);
-    const { playing } = useSoundContext();
+    const [ thisPlaying, setThisPlaying ] = useState(true);
+    const { playing, dispatch } = useSoundContext();
     const { user } = useAuthContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (playing) {
-            thisPlating ? play() : pause();
+            thisPlaying ? play() : pause();
         } else {
             pause();
         }
-    },[thisPlating, playing, play, pause]);
+    },[thisPlaying, playing, play, pause]);
 
     const iconSize = 40;
 
@@ -32,8 +32,8 @@ const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
             <EmptyFavIcon size={iconSize} strokewidth={1.5}/>
         </div>
-        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlating)}>
-         {thisPlating ? <PauseIcon size={iconSize}/> : <PlayIcon size={iconSize}/>}
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlaying)}>
+         {thisPlaying ? <SoundOn size={iconSize}/> : <SoundOff size={iconSize}/>}
         </div>
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
             <Xmark size={iconSize}/>

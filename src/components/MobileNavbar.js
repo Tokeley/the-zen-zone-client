@@ -37,7 +37,7 @@ const MobileNavbar = () => {
                 <div className="w-2/12 flex justify-center items-center">
                     <div onClick={handleMenuButtonClick}>
                         { 
-                            menuOpen ? <Xmark size={60}/> : <Burger size={60} />
+                            menuOpen ? <Xmark size={50}/> : <Burger size={50} />
                         }
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const MobileNavbar = () => {
                 <div className="w-2/12  flex justify-center">
                     <div className="hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayButtonClick}>
                     {
-                    playing ? <PauseIcon size={60}/> : <PlayIcon size={60}/>
+                    playing ? <PauseIcon size={50}/> : <PlayIcon size={50}/>
                     }
                 </div>
                 </div>
@@ -84,8 +84,34 @@ const MobileNavbar = () => {
                             </div>
                             <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
                         </div>
-
-
+                        <div className="mb-4"></div>
+                        {user && (
+                            <div className="flex-col items-center justify-center border-2 p-2 mb-2"> 
+                                <div className="flex justify-center mb-2">
+                                    <span>{user.email}</span>
+                                </div>
+                                <div className="flex justify-center">
+                                    <button onClick={handleLogout} className="btn">
+                                        Log-out
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                        {!user && (
+                            <div className="flex mb-4 justify-center'">
+                                <div className="mr-1">
+                                    <a href="login" className="btn">
+                                        Log-in
+                                    </a>
+                                </div>
+                                <div className="ml-1">
+                                    <a href="signup" className="btn">
+                                        Sign-up
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        )}
                     </div>
                 </div>
             }
