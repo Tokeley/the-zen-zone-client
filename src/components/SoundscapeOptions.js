@@ -29,13 +29,13 @@ const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
     }
   return (
     <div className="grid grid-cols-3 gap-4">
-        <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
             <EmptyFavIcon size={iconSize} strokewidth={1.5}/>
         </div>
-        <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlating)}>
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlating)}>
          {thisPlating ? <PauseIcon size={iconSize}/> : <PlayIcon size={iconSize}/>}
         </div>
-        <div className="flex justify-center items-center bg-gray-200 p-4 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
             <TrashIcon size={iconSize}/>
         </div>
     </div>
