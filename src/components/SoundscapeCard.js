@@ -1,24 +1,69 @@
 import React from 'react'
-import { EmptyFavIcon, FullFavIcon, AddIcon } from './Icons';
+import { EmptyFavIcon, FullFavIcon, AddIcon, Tick } from './Icons';
 import {useSoundscapesContext} from "../hooks/useSoundscapesContext"
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useFavouritesContext } from '../hooks/useFavouritesContext';
+import { useState, useEffect } from 'react';
+
+
 
 const SoundscapeCard = ({soundscape}) => {
   const imageUrl= require(`../images/${soundscape.imagePath}`);
-  const {dispatch} = useSoundscapesContext();
+  const {dispatch: soundScapeDispatch, soundscapes} = useSoundscapesContext();
+  const {dispatch: favouritesDispatch} = useFavouritesContext();
   const { user } = useAuthContext();
+  const [inUse, setInuse] = useState(false);
   const navigate = useNavigate();
+  const soundscapeId = soundscape._id;
+  const userId = user.id;
+
+  useEffect(() => {
+    if (soundscapes.some(item => item._id == soundscape._id)){
+      console.log("true");
+      setInuse(true);
+    } else {
+      setInuse(false);
+    }
+  },[]);
+
+  // Adds sounscape to user favourites field in database
+  const addSoundScapeToFavourites = async () => {
+    const response = await fetch('/api/user/addSoundscapeToFavourites' ,{
+      method: 'POST',
+      body: JSON.stringify({userId, soundscapeId}),
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+      }
+    })
+  
+    const json = await response.json()
+
+    if (!response.ok){
+      console.log("Error adding SS to favs: " + json.error);
+    }
+  
+    if (response.ok){
+      favouritesDispatch({type: 'ADD', payload: json.soundscape})
+    }
+  }
 
   const handleAdd = () => {
-    dispatch({type: 'ADD_SOUND', payload: soundscape})
+    if (inUse){ return; }
+    setInuse(true);
+    soundScapeDispatch({type: 'ADD_SOUND', payload: soundscape})
   }
 
   const handleFavClick = () => {
     if (!user){
         navigate("/login");
     }
-}
+    if (user){
+      console.log("Add to favourtes...")
+      addSoundScapeToFavourites();
+    }
+  } 
 
   const backgroundStyle = {
     backgroundImage: `url(${imageUrl})`,
@@ -36,7 +81,7 @@ const SoundscapeCard = ({soundscape}) => {
             <EmptyFavIcon size={40} strokewidth={1}/>
           </div>
           <div onClick={handleAdd}>
-            <AddIcon size={40}/>
+            { inUse ? <Tick size={40}/> : <AddIcon size={40}/>}
           </div>
         </div>
       </div>
