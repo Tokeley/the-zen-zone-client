@@ -12,6 +12,7 @@
   .range-slider {
     width: 480px;
     margin: 24px auto 0;
+    height: 100%;
   }
   
   .range-slider.margin-lg {
@@ -158,7 +159,7 @@
   }
   .single-thumb .range-slider__thumb[data-lower] {
     width: 100px;
-    height: 20px;
+    height: 15px;
     border-radius: 0px;
     background-color: #5e5955;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -166,16 +167,19 @@
   .single-thumb .range-slider__range {
     border-radius: 0px;
     background-color: #88807B;
-   
+    
   }
   
   .single-thumb{
     border-radius: 0px;
     background-color: #88807B;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   }
   /* Vertical Range Slider */
   .single-thumb[data-vertical] {
-    height: 500px;
+    height: 80%;
+    margin-top: 0%;
+    margin-bottom: 0%;
   }
   
