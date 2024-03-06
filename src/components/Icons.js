@@ -65,3 +65,11 @@ export const QuestionIcon = ({size}) => {
         </svg>
     )
 }
+
+export const Xmark = ({size}) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" cclassName={`w-6 h-${size} hover:cursor-pointer hover:scale-110 transition-transform duration-300`}>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+    )
+}

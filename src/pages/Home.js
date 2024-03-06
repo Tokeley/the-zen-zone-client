@@ -9,10 +9,10 @@ const Home = () => {
   const {soundscapes, dispatch} = useSoundscapesContext()
   const {navHeight} = useNavbarHeightContext()
 
-  console.log(window.innerHeight);
+  
     
   return (
-      <div style={{ display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
+      <div className="text-darkGray" style={{ display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
         {soundscapes && soundscapes.map((soundscape) => (
           <SoundscapeUnit key={soundscape._id} soundscape={soundscape} style={{width: "100%"}}/>
         ))}

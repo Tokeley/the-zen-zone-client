@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useSoundContext } from '../hooks/useSoundContext';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { PlayIcon, PauseIcon, TrashIcon, EmptyFavIcon } from './Icons';
+import { PlayIcon, PauseIcon, Xmark, EmptyFavIcon } from './Icons';
 import { useNavigate } from "react-router-dom";
 
 
@@ -36,7 +36,7 @@ const SoundscapeOptions = ({ play, pause, removeSoundscape}) => {
          {thisPlating ? <PauseIcon size={iconSize}/> : <PlayIcon size={iconSize}/>}
         </div>
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
-            <TrashIcon size={iconSize}/>
+            <Xmark size={iconSize}/>
         </div>
     </div>
   );

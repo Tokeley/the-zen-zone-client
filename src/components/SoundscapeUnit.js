@@ -48,7 +48,7 @@ const SoundscapeUnit = ({ soundscape }) => {
     return (
         <div className="h-full flex flex-col justify-center items-center" style={backgroundStyle}>
           <div className="h-full flex flex-col justify-center items-center px-3" style={{width: "25%", minWidth: "200px"}}>
-            <div className="h-16 border-2 items-center flex justify-center rounded-md w-full"style={{backdropFilter: "blur(7px)"}}>
+            <div className="h-16 border-2 items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
                 <h1 className='text-3xl'>{soundscape.title}</h1> 
               </div>
               <div className="h-full flex flex-col justify-center items-center" style={{ height: "70%"}}>
@@ -64,7 +64,7 @@ const SoundscapeUnit = ({ soundscape }) => {
                   onInput={handleInputChange}
                   />
               </div>
-              <div className="h-16  border-2 items-center flex justify-center rounded-md w-full" style={{backdropFilter: "blur(7px)"}}>
+              <div className="h-16  border-2 items-center flex justify-center rounded-sm w-full" style={{backdropFilter: "blur(7px)"}}>
                 <SoundscapeOptions play = {play} pause={pause} removeSoundscape={removeSoundscape}/> 
               </div>
           </div>

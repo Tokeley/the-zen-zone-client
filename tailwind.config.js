@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         cream: "#dbd7c7",
         gray: "#424242",
-        lightGray: "#706d6d"
+        lightGray: "#706d6d", 
+        darkGray: "#1f1e1e"
       },
       fontFamily: {
         titleFont: ['Cormorant']
