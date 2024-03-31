@@ -13,6 +13,7 @@ export const favouritesReducer = (state, action) => {
         favourites: [action.payload, ...state.favourites]
        }
     case 'REMOVE':
+        console.log("payload: "+ action)
         return { 
             favourites: state.favourites.filter((a) => a._id !== action.payload._id)
         }
