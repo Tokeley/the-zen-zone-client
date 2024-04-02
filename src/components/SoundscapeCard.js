@@ -17,20 +17,19 @@ const SoundscapeCard = ({soundscape}) => {
 
   useEffect(() => {
     setInuse(soundscapes.some(item => item._id == soundscape._id))
-    console.log("Favourites: " + JSON.stringify(favourites))
     setFavourited(favourites.some(item => item._id == soundscape._id))
   },[favourites]);
 
   // Adds sounscape to user favourites field in database
   const addSoundScapeToFavourites = async () => {
-    await addFavourite(user.id, soundscape._id)
     setFavourited(true)
+    await addFavourite(user.id, soundscape._id)
   }
 
   // Removes sounscape from user favourites field in database
   const removeSoundScapeFromFavourites = async () => {
-    await removeFavourite(user.id, soundscape._id)
     setFavourited(false)
+    await removeFavourite(user.id, soundscape._id)
   }
 
   const handleAdd = () => {

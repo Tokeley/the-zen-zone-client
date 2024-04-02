@@ -65,7 +65,7 @@ const SoundscapeUnit = ({ soundscape }) => {
                   />
               </div>
               <div className="h-16  border-2 items-center flex justify-center rounded-sm w-full" style={{backdropFilter: "blur(7px)"}}>
-                <SoundscapeOptions play = {play} pause={pause} removeSoundscape={removeSoundscape}/> 
+                <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}/> 
               </div>
           </div>
         </div>
