@@ -1,4 +1,5 @@
 import React from 'react'
+import { useFavouritesContext } from '../hooks/useFavouritesContext';
 
 const About = () => {
   return (

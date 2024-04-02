@@ -12,10 +12,10 @@ const SoundscapeCard = ({soundscape}) => {
   const {dispatch: favouritesDispatch, favourites} = useFavouritesContext();
   const { user } = useAuthContext();
   const [inUse, setInuse] = useState(false);
-  const [favourited, setFavourited] = useState(false)
   const navigate = useNavigate();
   const soundscapeId = soundscape._id;
   const [userId, setUserId] = useState("")
+  const [favourited, setFavourited] = useState(false)
 
   useEffect(() => {
     if (user){
@@ -30,15 +30,6 @@ const SoundscapeCard = ({soundscape}) => {
       setInuse(false);
     }
   },[]);
-
-  useEffect(() => {
-    console.log(favourites)
-    if (favourites.some(item => item._id == soundscape._id)){
-      setFavourited(true)
-    } else {
-      setFavourited(false)
-    }
-  }, [])
 
   // Adds sounscape to user favourites field in database
   const addSoundScapeToFavourites = async () => {
@@ -59,7 +50,6 @@ const SoundscapeCard = ({soundscape}) => {
   
     // Add soundscape to favourites context if succesful
     if (response.ok){
-      setFavourited(true)
       favouritesDispatch({type: 'ADD', payload: soundscape})
     }
   }
@@ -84,8 +74,6 @@ const SoundscapeCard = ({soundscape}) => {
   
     // Add soundscape to favourites context if succesful
     if (response.ok){
-      setFavourited(false)
-      console.log(json.soundscape)
       favouritesDispatch({type: 'REMOVE', payload: soundscape})
     }
   }
@@ -94,26 +82,6 @@ const SoundscapeCard = ({soundscape}) => {
     if (inUse){ return; }
     setInuse(true);
     soundScapeDispatch({type: 'ADD_SOUND', payload: soundscape})
-  }
-
-  const handleFavClick = () => {
-    if (!user){
-        navigate("/login");
-    }
-    if (user){
-      console.log("Adding to favourtes...")
-      addSoundScapeToFavourites();
-    }
-  } 
-
-  const handleRemoveFavClick = () => {
-    if (!user){
-      navigate("/login");
-    }
-    if (user){
-      console.log("Removing from favourtes...")
-      removeSoundScapeFromFavourites();
-    }
   }
 
   const backgroundStyle = {
@@ -130,12 +98,12 @@ const SoundscapeCard = ({soundscape}) => {
         <div className="flex items-center">
           {favourited 
           ? (
-            <div onClick={handleRemoveFavClick}>
+            <div>
               <FullFavIcon size={40} strokewidth={1}/>
             </div>
           ) 
           : (
-            <div onClick={handleFavClick}>
+            <div>
               <EmptyFavIcon size={40} strokewidth={1}/>
             </div>
           )}
