@@ -9,73 +9,28 @@ import { useState, useEffect } from 'react';
 const SoundscapeCard = ({soundscape}) => {
   const imageUrl= require(`../images/${soundscape.imagePath}`);
   const {dispatch: soundScapeDispatch, soundscapes} = useSoundscapesContext();
-  const {dispatch: favouritesDispatch, favourites} = useFavouritesContext();
   const { user } = useAuthContext();
   const [inUse, setInuse] = useState(false);
-  const navigate = useNavigate();
   const soundscapeId = soundscape._id;
-  const [userId, setUserId] = useState("")
   const [favourited, setFavourited] = useState(false)
+  const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
 
   useEffect(() => {
-    if (user){
-      setUserId(user.id)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (soundscapes.some(item => item._id == soundscape._id)){
-      setInuse(true);
-    } else {
-      setInuse(false);
-    }
-  },[]);
+    setInuse(soundscapes.some(item => item._id == soundscape._id))
+    console.log("Favourites: " + JSON.stringify(favourites))
+    setFavourited(favourites.some(item => item._id == soundscape._id))
+  },[favourites]);
 
   // Adds sounscape to user favourites field in database
   const addSoundScapeToFavourites = async () => {
-    const response = await fetch('/api/user/addSoundscapeToFavourites' ,{
-      method: 'POST',
-      body: JSON.stringify({userId, soundscapeId}),
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`
-      }
-    })
-  
-    const json = await response.json()
-
-    if (!response.ok){
-      console.log("Error adding SS to favs: " + json.error);
-    }
-  
-    // Add soundscape to favourites context if succesful
-    if (response.ok){
-      favouritesDispatch({type: 'ADD', payload: soundscape})
-    }
+    await addFavourite(user.id, soundscape._id)
+    setFavourited(true)
   }
 
   // Removes sounscape from user favourites field in database
   const removeSoundScapeFromFavourites = async () => {
-    console.log({userId, soundscapeId})
-    const response = await fetch('/api/user/removeSoundscapeFromFavourites' ,{
-      method: 'POST',
-      body: JSON.stringify({userId, soundscapeId}),
-      headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`
-      }
-    })
-  
-    const json = await response.json()
-
-    if (!response.ok){
-      console.log("Error removing SS from favs: " + json.error);
-    }
-  
-    // Add soundscape to favourites context if succesful
-    if (response.ok){
-      favouritesDispatch({type: 'REMOVE', payload: soundscape})
-    }
+    await removeFavourite(user.id, soundscape._id)
+    setFavourited(false)
   }
 
   const handleAdd = () => {
@@ -98,12 +53,12 @@ const SoundscapeCard = ({soundscape}) => {
         <div className="flex items-center">
           {favourited 
           ? (
-            <div>
+            <div onClick={removeSoundScapeFromFavourites}>
               <FullFavIcon size={40} strokewidth={1}/>
             </div>
           ) 
           : (
-            <div>
+            <div onClick={addSoundScapeToFavourites}>
               <EmptyFavIcon size={40} strokewidth={1}/>
             </div>
           )}

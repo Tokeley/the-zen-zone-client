@@ -13,11 +13,11 @@ root.render(
     <NavbarHeightContextProvider>
       <SoundscapesContextProvider>
         <SoundContextProvider>
-          <FavouritesContextProvider>
             <AuthContextProvider>
-              <App/>
+              <FavouritesContextProvider>
+                <App/>
+              </FavouritesContextProvider>
             </AuthContextProvider>
-          </FavouritesContextProvider>
         </SoundContextProvider>
       </SoundscapesContextProvider>
     </NavbarHeightContextProvider>

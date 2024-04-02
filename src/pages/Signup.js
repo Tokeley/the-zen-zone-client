@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { useAPI } from '../hooks/useAPI';
+import { useSignup } from '../hooks/useSignup';
 
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {signup, error, isLoading} = useAPI()
+  const {signup, error, isLoading} = useSignup()
 
   const handleSubmit = async (e) => {
     e.preventDefault()

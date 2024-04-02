@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import SoundscapeCard from '../components/SoundscapeCard';
 import { useSoundscapesContext } from "../hooks/useSoundscapesContext";
-import { useAPI } from '../hooks/useAPI';
+import { useGetSoundscapes } from '../hooks/useGetSoundscapes';
 
 const Soundscapes = () => {
   const [soundscapes, setSoundscapes] = useState([]);
-  const { getAllSoundScapes, isLoading, error, response } = useAPI();
+  const { getSoundscapes, isLoading, error } = useGetSoundscapes();
   
   useEffect(() => {
-    getAllSoundScapes();
-  }, []);
+    const fetchSoundscapes = async () => {
+      try {
+        const response = await getSoundscapes();
+        setSoundscapes(response); // Update state with the fetched soundscapes
+      } catch (error) {
+        console.error('Error fetching soundscapes:', error);
+      }
+    };
 
-  useEffect(() => {
-    if (!isLoading && response) {
-      setSoundscapes(response);
-    }
-  }, [isLoading, response]);
+    fetchSoundscapes();
+  }, []);
 
   return (
     <>
-      {error ? <p>error</p> : null}
-      
         {isLoading ? (
           <h2>Loading...</h2>
         ) : (
@@ -30,6 +31,7 @@ const Soundscapes = () => {
             ))}
           </div>
         )}
+        {error && <div className="text-red-500 mt-2">{error}</div>}
     </>
   );
 };
