@@ -16,22 +16,26 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape}) => {
     const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
 
     useEffect(() => {
-        console.log(JSON.stringify(soundscape))
-
         setFavourited(favourites.some(item => item._id == soundscape._id))
-      },[favourites]);
+    },[favourites]);
     
-      // Adds sounscape to user favourites field in database
-      const addSoundScapeToFavourites = async () => {
+    // Adds sounscape to user favourites field in database
+    const addSoundScapeToFavourites = async () => {
+        if (!user){
+            navigate("/login")
+        }
         setFavourited(true)
         await addFavourite(user.id, soundscape._id)
-      }
-    
-      // Removes sounscape from user favourites field in database
-      const removeSoundScapeFromFavourites = async () => {
+    }
+
+    // Removes sounscape from user favourites field in database
+    const removeSoundScapeFromFavourites = async () => {
+        if (!user){
+            navigate("/login")
+        }
         setFavourited(false)
         await removeFavourite(user.id, soundscape._id)
-      }
+    }
     
 
     useEffect(() => {

@@ -7,11 +7,11 @@ import { useFavouritesContext } from '../hooks/useFavouritesContext';
 import { useState, useEffect } from 'react';
 
 const SoundscapeCard = ({soundscape}) => {
+  const navigate = useNavigate()
   const imageUrl= require(`../images/${soundscape.imagePath}`);
   const {dispatch: soundScapeDispatch, soundscapes} = useSoundscapesContext();
   const { user } = useAuthContext();
   const [inUse, setInuse] = useState(false);
-  const soundscapeId = soundscape._id;
   const [favourited, setFavourited] = useState(false)
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
 
@@ -22,12 +22,18 @@ const SoundscapeCard = ({soundscape}) => {
 
   // Adds sounscape to user favourites field in database
   const addSoundScapeToFavourites = async () => {
+    if (!user){
+      navigate("/login")
+    }
     setFavourited(true)
     await addFavourite(user.id, soundscape._id)
   }
 
   // Removes sounscape from user favourites field in database
   const removeSoundScapeFromFavourites = async () => {
+    if (!user){
+      navigate("/login")
+    }
     setFavourited(false)
     await removeFavourite(user.id, soundscape._id)
   }
