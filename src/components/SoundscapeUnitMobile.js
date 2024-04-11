@@ -15,9 +15,8 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
 
     const imageUrl= require(`../images/${soundscape.imagePath}`);
     const audioUrl = require(`../soundscapes/${soundscape.audioPath}`);
-    const { removeSoundscape: removeSoundscapeFromContext } = useMixContext();
-    const [volumeArray, setVolumeArray] = useState([0.5, 1]);
-    const [prevVol, setPrevVolume] = useState(0);
+    const { removeSoundscape: removeSoundscapeFromContext, changeVolume } = useMixContext();
+    const [volumeArray, setVolumeArray] = useState([1-volumeInit, 1]);
     const [volume, setVolume] = useState(volumeInit);
     const [play, { pause, stop}] = useSound(audioUrl, {
         volume: volume,
@@ -26,11 +25,8 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
     
     useEffect(() => {
         setVolume(1 - volumeArray[0]);
+        changeVolume(soundscape._id, 1 - volumeArray[0])
     }, [volumeArray]);
-    
-    useEffect(() => {
-      setVolume(prevVol);
-    }, []);
     
     const handleInputChange = (event) => {
       setVolumeArray(event);

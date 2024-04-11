@@ -5,15 +5,17 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { SoundOn, SoundOff, Xmark, EmptyFavIcon, FullFavIcon } from './Icons';
 import { useNavigate } from "react-router-dom";
 import { useFavouritesContext } from '../hooks/useFavouritesContext';
+import { useMixContext } from '../hooks/useMixContext';
 
 
 const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}) => {
     const [ thisPlaying, setThisPlaying ] = useState(!isMuted);
-    const { playing, dispatch } = useSoundContext();
+    const { playing } = useSoundContext();
     const { user } = useAuthContext();
     const navigate = useNavigate();
     const [favourited, setFavourited] = useState(false)
     const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
+    const {changeIsMuted} = useMixContext()
 
     useEffect(() => {
         setFavourited(favourites.some(item => item._id == soundscape._id))
@@ -53,6 +55,11 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
             navigate("/login");
         }
     }
+
+    const handleMuteClick = () => {
+        setThisPlaying(!thisPlaying)
+        changeIsMuted(soundscape._id, thisPlaying)
+    }
   return (
     <div className="flex justify-between w-full px-2 md:px-6">
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
@@ -68,7 +75,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
                 </div>
             )}
         </div>
-        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={() => setThisPlaying(!thisPlaying)}>
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300" onClick={handleMuteClick}>
          {thisPlaying ? <SoundOn size={iconSize}/> : <SoundOff size={iconSize}/>}
         </div>
         <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={removeSoundscape}>
