@@ -6,6 +6,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark } from './Icons';
+import { useMixContext } from '../hooks/useMixContext';
 
 const MobileNavbar = () => {
 
@@ -15,10 +16,14 @@ const MobileNavbar = () => {
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
     const [playing, setPlaying] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    let header = useRef(null);
+    const { saveMix } = useMixContext
 
     const handleLogout = () => {
-    logout()
+        logout()
+    }
+
+    const handleSaveMix = () => {
+        saveMix()
     }
 
     const handlePlayButtonClick = () => {
@@ -88,10 +93,13 @@ const MobileNavbar = () => {
                         {user && (
                             <div className="flex-col items-center justify-center border-2 p-2 mb-2"> 
                                 <div className="flex justify-center mb-2">
-                                    <span>{user.email}</span>
+                                <span>{user.email}</span>
                                 </div>
-                                <div className="flex justify-center">
-                                    <button onClick={handleLogout} className="btn">
+                                <div className="flex-col items-center">
+                                    <button onClick={handleLogout} className="btn mr-1">
+                                        Save Mix
+                                    </button>
+                                    <button onClick={handleLogout} className="btn ml-1">
                                         Log-out
                                     </button>
                                 </div>

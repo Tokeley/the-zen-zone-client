@@ -6,6 +6,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger } from './Icons';
+import { useMixContext } from '../hooks/useMixContext';
 
 const Desktopnavbar = () => {
 
@@ -14,10 +15,14 @@ const Desktopnavbar = () => {
     const { dispatch} = useNavbarHeightContext();
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
     const [playing, setPlaying] = useState(false);
-    let header = useRef(null);
+    const { saveMix } = useMixContext
   
     const handleLogout = () => {
       logout()
+    }
+
+    const handleSaveMix = () => {
+      saveMix()
     }
   
     const handlePlayButtonClick = () => {
@@ -74,12 +79,15 @@ const Desktopnavbar = () => {
 
         <div className="flex items-center justify-end w-full">
       {user && (
-        <div className="flex items-center"> 
+          <div className="flex items-center"> 
             <div className="mr-3">
               <span>{user.email}</span>
             </div>
-            <button onClick={handleLogout} className="btn">
+            <button onClick={handleLogout} className="btn mr-3" >
               Log-out
+            </button>
+            <button onClick={handleSaveMix} className="btn">
+              Save Mix
             </button>
           </div>
         )}
