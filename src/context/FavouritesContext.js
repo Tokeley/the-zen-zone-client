@@ -14,7 +14,7 @@ export const FavouritesContextProvider = ({ children }) => {
   const { removeFavourite: remove, isLoading: removeIsLoading, error: removeError } = useRemoveFavourite();
   const { getFavourites, isLoading, error} = useGetFavourites();
 
-  // Function to add favorite
+  // Add a favorite
   const addFavourite = async (userId, soundscape) => {
     try {
       const response = await add(userId, soundscape);
@@ -24,7 +24,7 @@ export const FavouritesContextProvider = ({ children }) => {
     }
   };
 
-  // Function to remove favorite
+  // Remove a favorite
   const removeFavourite = async (userId, soundscape) => {
     try {
       const response = await remove(userId, soundscape);
@@ -33,6 +33,12 @@ export const FavouritesContextProvider = ({ children }) => {
       console.error('Error removing favourite:', error);
     }
   };
+
+  // Function to clear favourites when user logs out
+  const clearFavouritesContext = () => {
+    setFavourites([]);
+  };
+
 
   useEffect(() => {
     const fetchFavourites = async () => {
@@ -54,6 +60,7 @@ export const FavouritesContextProvider = ({ children }) => {
       favourites,
       addFavourite,
       removeFavourite,
+      clearFavouritesContext
     }}>
       { children }
     </FavouritesContext.Provider>

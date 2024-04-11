@@ -5,16 +5,19 @@ import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import '../style.css';
 import SoundscapeOptions from './SoundscapeOptions';
-import { useSoundscapesContext } from '../hooks/useSoundscapesContext'
+import { useMixContext } from '../hooks/useMixContext'
 
-const SoundscapeUnit = ({ soundscape }) => {
+const SoundscapeUnit = ({ soundscapeUnit }) => {
+    const soundscape = soundscapeUnit.soundscape
+    const volumeInit = soundscapeUnit.volume
+    const isMuted = soundscapeUnit.isMuted
 
     const imageUrl= require(`../images/${soundscape.imagePath}`);
     const audioUrl = require(`../soundscapes/${soundscape.audioPath}`);
-    const { dispatch } = useSoundscapesContext();
+    const { removeSoundscape: removeSoundscapeFromContext } = useMixContext();
     const [volumeArray, setVolumeArray] = useState([0.5, 1]);
     const [prevVol, setPrevVolume] = useState(0);
-    const [volume, setVolume] = useState(0.5);
+    const [volume, setVolume] = useState(volumeInit);
     const [play, { pause, stop}] = useSound(audioUrl, {
         volume: volume,
         loop: true
@@ -35,7 +38,7 @@ const SoundscapeUnit = ({ soundscape }) => {
 
       const removeSoundscape = () => {
         stop();
-        dispatch({type: 'REMOVE_SOUND', payload: soundscape})
+        removeSoundscapeFromContext(soundscape._id);
       }
     
     const backgroundStyle = {
@@ -65,7 +68,7 @@ const SoundscapeUnit = ({ soundscape }) => {
                   />
               </div>
               <div className="h-16  border-2 items-center flex justify-center rounded-sm w-full" style={{backdropFilter: "blur(7px)"}}>
-                <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}/> 
+                <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape} isMuted={isMuted}/> 
               </div>
           </div>
         </div>

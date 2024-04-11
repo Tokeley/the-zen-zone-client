@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useFavouritesContext } from '../hooks/useFavouritesContext';
 
 
-const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape}) => {
-    const [ thisPlaying, setThisPlaying ] = useState(true);
+const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}) => {
+    const [ thisPlaying, setThisPlaying ] = useState(!isMuted);
     const { playing, dispatch } = useSoundContext();
     const { user } = useAuthContext();
     const navigate = useNavigate();
@@ -17,7 +17,8 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape}) => {
 
     useEffect(() => {
         setFavourited(favourites.some(item => item._id == soundscape._id))
-    },[favourites]);
+        console.log("REFRESH THE FAVS")
+    },[favourites, user, soundscape]);
     
     // Adds sounscape to user favourites field in database
     const addSoundScapeToFavourites = async () => {
@@ -37,7 +38,6 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape}) => {
         await removeFavourite(user.id, soundscape._id)
     }
     
-
     useEffect(() => {
         if (playing) {
             thisPlaying ? play() : pause();
@@ -59,12 +59,12 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape}) => {
             {favourited 
             ? (
                 <div onClick={removeSoundScapeFromFavourites}>
-                <FullFavIcon size={40} strokewidth={1}/>
+                <FullFavIcon size={40} strokewidth={1.5}/>
                 </div>
             ) 
             : (
                 <div onClick={addSoundScapeToFavourites}>
-                <EmptyFavIcon size={40} strokewidth={1}/>
+                <EmptyFavIcon size={40} strokewidth={1.5}/>
                 </div>
             )}
         </div>

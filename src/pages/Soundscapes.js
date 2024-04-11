@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import SoundscapeCard from '../components/SoundscapeCard';
-import { useSoundscapesContext } from "../hooks/useSoundscapesContext";
 import { useGetSoundscapes } from '../hooks/useGetSoundscapes';
 
 const Soundscapes = () => {

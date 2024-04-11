@@ -25,18 +25,6 @@ const Navbar = () => {
     setPlaying(contextPlaying);
   },[contextPlaying, dispatch ]);
 
-  const handleLogout = () => {
-    logout()
-  }
-
-
-  const handlePlayBittonClick = () => {
-    soundDispatch({type: 'SET_PLAYING', payload: !playing});
-    setPlaying(!playing);
-  }
-
-  console.log("Menu open:" + menuOpen);
-
   return (
     <header>
       <div className={`bg-cream text-gray border-b-2`} ref={header}>

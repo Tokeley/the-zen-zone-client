@@ -1,6 +1,6 @@
 import React from 'react'
 import { EmptyFavIcon, FullFavIcon, AddIcon, Tick } from './Icons';
-import {useSoundscapesContext} from "../hooks/useSoundscapesContext"
+import {useMixContext} from "../hooks/useMixContext"
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useFavouritesContext } from '../hooks/useFavouritesContext';
@@ -9,14 +9,14 @@ import { useState, useEffect } from 'react';
 const SoundscapeCard = ({soundscape}) => {
   const navigate = useNavigate()
   const imageUrl= require(`../images/${soundscape.imagePath}`);
-  const {dispatch: soundScapeDispatch, soundscapes} = useSoundscapesContext();
+  const { mix, addSoundscape } = useMixContext();
   const { user } = useAuthContext();
   const [inUse, setInuse] = useState(false);
   const [favourited, setFavourited] = useState(false)
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
 
   useEffect(() => {
-    setInuse(soundscapes.some(item => item._id == soundscape._id))
+    setInuse(mix.some(item => item.soundscape._id == soundscape._id))
     setFavourited(favourites.some(item => item._id == soundscape._id))
   },[favourites]);
 
@@ -41,7 +41,7 @@ const SoundscapeCard = ({soundscape}) => {
   const handleAdd = () => {
     if (inUse){ return; }
     setInuse(true);
-    soundScapeDispatch({type: 'ADD_SOUND', payload: soundscape})
+    addSoundscape(soundscape, 0.5, false)
   }
 
   const backgroundStyle = {
