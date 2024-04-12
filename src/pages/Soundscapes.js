@@ -24,7 +24,7 @@ const Soundscapes = () => {
         {isLoading ? (
           <h2>Loading...</h2>
         ) : (
-          <div className=" flex flex-wrap justify-center">
+          <div className="flex flex-wrap justify-center mx">
             {soundscapes && soundscapes.map((soundscape) => (
               <SoundscapeCard key={soundscape._id} soundscape={soundscape} />
             ))}

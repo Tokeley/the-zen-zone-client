@@ -7,6 +7,7 @@ import { MixContextProvider } from './context/MixContext';
 import { NavbarHeightContextProvider } from './context/NavbarHeightContext';
 import { SoundContextProvider } from './context/SoundContext';
 import { FavouritesContextProvider } from './context/FavouritesContext';
+import { UserMixesContextProvider } from './context/UserMixesContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,9 +15,11 @@ root.render(
       <AuthContextProvider>
         <SoundContextProvider>
           <MixContextProvider>
-            <FavouritesContextProvider>
-              <App/>
-            </FavouritesContextProvider>
+            <UserMixesContextProvider>
+              <FavouritesContextProvider>
+                <App/>
+              </FavouritesContextProvider>
+            </UserMixesContextProvider>
           </MixContextProvider>
         </SoundContextProvider>
       </AuthContextProvider>

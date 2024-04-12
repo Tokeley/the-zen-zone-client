@@ -8,14 +8,17 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
+import Mixes from './pages/Mixes';
 import { useMixContext } from './hooks/useMixContext';
 import { useAddMix } from './hooks/useAddMix'
+import { useUserMixesContext } from './hooks/useUserMixesContext';
 
 function App() {
   const { user } = useAuthContext();
   const [open, setOpen] = useState(false);
   const [mixTitle, setMixTitle] = useState('');
-  const {addMix, isLoading, error} = useAddMix()
+  const { addMix } = useUserMixesContext()
+
   const toggleModal = () => {
     setOpen(!open); // Toggles the modal state
   };
@@ -26,7 +29,6 @@ function App() {
     toggleModal()
 
     await addMix(user.id, mixTitle, mix)
-    console.log(error)
   }
 
 
@@ -42,12 +44,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/mixes" element={user ? <Mixes /> : <Login />} />
           </Routes>
         </div>
         {open && (
           <dialog open className="modal">
           <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4">
-            <h3 className="text-2xl">Mix Title:</h3>
+            <h3 className="text-2xl font-headingFont">Mix Title:</h3>
             <input
               type="text"
               value={mixTitle}
@@ -57,6 +60,7 @@ function App() {
             />
             <div className="modal-action mt-4 flex justify-center">
               <button className="custom-btn" onClick={saveMix}>Save</button>
+              <button className="custom-btn" onClick={toggleModal}>Cancel</button>
             </div>
           </div>
         </dialog>

@@ -5,7 +5,7 @@ import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
-import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger } from './Icons';
+import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, MixIcon } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
 
 const Desktopnavbar = ({saveMixDialog}) => {
@@ -37,7 +37,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
               <div class="group">
                 <div className="flex items-center">
                   <SparkleIcon size={25}/>
-                  <a href="soundscapes" class="block py-2 px-3 text-lg">Soundscapes</a>
+                  <a href="soundscapes" class="block py-2 px-1 text-lg">Soundscapes</a>
                 </div>
                 <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
               </div>
@@ -45,7 +45,15 @@ const Desktopnavbar = ({saveMixDialog}) => {
               <div class="group">
                 <div className="flex items-center">
                   <EmptyFavIcon size={25} strokewidth={1.5}/>
-                  <a href="favourites" class="block py-2 px-3 text-lg">Favourites</a>
+                  <a href="favourites" class="block py-2 px-1 text-lg">Favourites</a>
+                </div>
+                <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+              </div>
+
+              <div class="group">
+                <div className="flex items-center">
+                  <MixIcon size={25} strokewidth={1.5}/>
+                  <a href="mixes" class="block py-2 px-1 text-lg">Mixes</a>
                 </div>
                 <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
               </div>
@@ -53,7 +61,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
               <div class="group">
                 <div className="flex items-center">
                   <QuestionIcon size={25}/>
-                  <a href="about" class="block py-2 px-3 text-lg">About</a>
+                  <a href="about" class="block py-2 px-1 text-lg">About</a>
                 </div>
                 <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
               </div>
