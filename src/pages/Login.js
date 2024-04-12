@@ -34,7 +34,7 @@ const Login = () => {
         />
         <div className="flex items-center justify-center pt-5">
           <button
-            className="btn"
+            className="custom-btn"
             type="submit"
             disabled={isLoading}
           > 

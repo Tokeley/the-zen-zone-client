@@ -8,7 +8,7 @@ import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
 
-const Desktopnavbar = () => {
+const Desktopnavbar = ({saveMixDialog}) => {
 
     const { logout } = useLogout();
     const { user } = useAuthContext();
@@ -22,7 +22,7 @@ const Desktopnavbar = () => {
     }
 
     const handleSaveMix = () => {
-      saveMix()
+      saveMixDialog()
     }
   
     const handlePlayButtonClick = () => {
@@ -83,23 +83,23 @@ const Desktopnavbar = () => {
             <div className="mr-3">
               <span>{user.email}</span>
             </div>
-            <button onClick={handleLogout} className="btn mr-3" >
-              Log-out
-            </button>
-            <button onClick={handleSaveMix} className="btn">
+            <button onClick={handleSaveMix} className="custom-btn mr-3">
               Save Mix
+            </button>
+            <button onClick={handleLogout} className="custom-btn" >
+              Log-out
             </button>
           </div>
         )}
         {!user && (
           <div className="flex">
             <div className="mr-1">
-              <a href="login" className="btn">
+              <a href="login" className="custom-btn">
                   Log-in
               </a>
           </div>
           <div className="ml-1">
-              <a href="signup" className="btn">
+              <a href="signup" className="custom-btn">
                   Sign-up
               </a>
           </div>

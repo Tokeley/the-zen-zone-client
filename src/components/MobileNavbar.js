@@ -8,7 +8,7 @@ import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
 
-const MobileNavbar = () => {
+const MobileNavbar = ({saveMixDialog}) => {
 
     const { logout } = useLogout();
     const { user } = useAuthContext();
@@ -23,7 +23,7 @@ const MobileNavbar = () => {
     }
 
     const handleSaveMix = () => {
-        saveMix()
+        saveMixDialog()
     }
 
     const handlePlayButtonClick = () => {
@@ -33,11 +33,10 @@ const MobileNavbar = () => {
 
     const handleMenuButtonClick = () => {
         setMenuOpen(!menuOpen)
-        console.log("Test")
     }
 
     return (
-        <div className={`w-full ${menuOpen ? 'navbar is-open' : 'navbar'}`}>
+        <div className={`flex-col w-full ${menuOpen ? 'navbar is-open' : 'navbar'}`}>
             <div className="flex justify-between w-full p-2">
                 <div className="w-2/12 flex justify-center items-center">
                     <div onClick={handleMenuButtonClick}>
@@ -64,7 +63,7 @@ const MobileNavbar = () => {
             
             {
                 menuOpen &&
-                <div className={`flex justify-center items-center`}>
+                <div className="flex justify-center items-center">
                     <div className="flex-col">
                         <div class="group">
                             <div className="flex items-center justify-center">
@@ -96,10 +95,10 @@ const MobileNavbar = () => {
                                 <span>{user.email}</span>
                                 </div>
                                 <div className="flex-col items-center">
-                                    <button onClick={handleLogout} className="btn mr-1">
+                                    <button onClick={handleSaveMix} className="custom-btn mr-1">
                                         Save Mix
                                     </button>
-                                    <button onClick={handleLogout} className="btn ml-1">
+                                    <button onClick={handleLogout} className="custom-btn ml-1">
                                         Log-out
                                     </button>
                                 </div>
@@ -108,12 +107,12 @@ const MobileNavbar = () => {
                         {!user && (
                             <div className="flex mb-4 justify-center'">
                                 <div className="mr-1">
-                                    <a href="login" className="btn">
+                                    <a href="login" className="custom-btn">
                                         Log-in
                                     </a>
                                 </div>
                                 <div className="ml-1">
-                                    <a href="signup" className="btn">
+                                    <a href="signup" className="custom-btn">
                                         Sign-up
                                     </a>
                                 </div>

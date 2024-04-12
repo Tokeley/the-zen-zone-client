@@ -1,6 +1,7 @@
 
 import { createContext, useReducer, useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useAddMix } from  '../hooks/useAddMix'
 
 export const MixContext = createContext()
 
@@ -90,7 +91,7 @@ export const MixContextProvider = ({ children }) => {
       removeSoundscape,
       changeVolume,
       changeIsMuted,
-      clearMix
+      clearMix,
     }}>
       { children }
     </MixContext.Provider>

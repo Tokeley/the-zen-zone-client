@@ -10,29 +10,24 @@ import MobileNavbar from './MobileNavbar';
 import DesktopNavbar from './DesktopNavbar'; 
 
 
-const Navbar = () => {
-  const { logout } = useLogout();
-  const { user } = useAuthContext();
+const Navbar = ({saveMixDialog}) => {
   const { dispatch} = useNavbarHeightContext();
   const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
-  const [playing, setPlaying] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   let header = useRef(null);
 
   useEffect(() => {
     dispatch({type: 'SET_NAVBAR_HEIGHT', payload: header.current.offsetHeight});
-    setPlaying(contextPlaying);
   },[contextPlaying, dispatch ]);
 
   return (
     <header>
       <div className={`bg-cream text-gray border-b-2`} ref={header}>
         <div className="hidden md:flex">
-          <DesktopNavbar/>
+          <DesktopNavbar saveMixDialog={saveMixDialog}/>
         </div>
         <div className="flex md:hidden">
-          <MobileNavbar setMenuOpenNav={setMenuOpen}/>
+          <MobileNavbar saveMixDialog={saveMixDialog}/>
         </div>
       </div>
     </header>
