@@ -16,15 +16,17 @@ const Favourites = () => {
   }, [favourites])
   
   return (
-    <>
-      <span>Your Favs</span>
+    <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
+        <h1 className="text-4xl font-heading font-thin text-center pb-2">Your Favourites</h1>
+        <div className="border-b border-w-full mx-7"></div>
         <div className="flex flex-wrap justify-center">
-          {favourites &&
-            favourites.map((favourite) => (
-              <SoundscapeCard key={favourite._id} soundscape={favourite} />
-            ))}
+            {favourites &&
+                favourites.map((favourite) => (
+                    <SoundscapeCard key={favourite._id} soundscape={favourite} />
+                ))}
         </div>
-    </>
+    </div>
+
   );
 };
 

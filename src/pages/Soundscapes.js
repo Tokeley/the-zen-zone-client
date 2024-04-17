@@ -20,9 +20,14 @@ const Soundscapes = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
+        <h1 className="text-4xl font-heading font-thin text-center pb-2">Soundscapes</h1>
+        <div className="border-b border-w-full mx-7"></div>
         {isLoading ? (
-          <h2>Loading...</h2>
+          <div class="w-full flex justify-center items-center">
+              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24"></div>
+          </div>
+      
         ) : (
           <div className="flex flex-wrap justify-center mx">
             {soundscapes && soundscapes.map((soundscape) => (
@@ -31,7 +36,7 @@ const Soundscapes = () => {
           </div>
         )}
         {error && <div className="text-red-500 mt-2">{error}</div>}
-    </>
+    </div>
   );
 };
 
