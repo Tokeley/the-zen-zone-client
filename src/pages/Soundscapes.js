@@ -21,7 +21,7 @@ const Soundscapes = () => {
 
   return (
     <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
-        <h1 className="text-4xl font-heading font-thin text-center pb-2">Soundscapes</h1>
+        <h1 className="text-4xl font-heading font-light text-center pb-2">Soundscapes</h1>
         <div className="border-b border-w-full mx-7"></div>
         {isLoading ? (
           <div class="w-full flex justify-center items-center">

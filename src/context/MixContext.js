@@ -76,6 +76,12 @@ export const MixContextProvider = ({ children }) => {
     localStorage.setItem("Mix", [])
   };
 
+  // Sets the mix 
+  const initMix = (newMix) => {
+    setMix(newMix)
+    localStorage.setItem("Mix", JSON.stringify(newMix))
+  }
+
 
   useEffect(() => {
     if (localStorage.getItem("Mix")){
@@ -92,6 +98,7 @@ export const MixContextProvider = ({ children }) => {
       changeVolume,
       changeIsMuted,
       clearMix,
+      initMix
     }}>
       { children }
     </MixContext.Provider>

@@ -49,8 +49,8 @@ const SoundscapeUnit = ({ soundscapeUnit }) => {
         <div className="h-full flex flex-col justify-center items-center" style={backgroundStyle}>
           <div className="h-full flex flex-col justify-center items-center px-3" style={{width: "25%", minWidth: "200px"}}>
             <div className="h-16 border-2 items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
-                <h1 className='text-4xl font-headingFont font-thin'>{soundscape.title}</h1> 
-              </div>
+                <h1 className='text-4xl font-heading font-light text-darkGray'>{soundscape.title}</h1> 
+            </div>
               <div className="h-full flex flex-col justify-center items-center" style={{ height: "70%"}}>
                   <RangeSlider
                   className="single-thumb"

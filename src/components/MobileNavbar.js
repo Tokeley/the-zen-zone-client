@@ -48,7 +48,7 @@ const MobileNavbar = ({saveMixDialog}) => {
 
                 <div className="w-8/12  flex justify-center items-center">
                     <Link to="/">
-                    <span className="font-titleFont text-4xl sm:text-6xl pl-3">TheZenZone</span>
+                    <span className="font-titleFont text-3xl xs:text-5xl pl-3">TheZenZone</span>
                     </Link>
                 </div>
 

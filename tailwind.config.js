@@ -4,9 +4,11 @@ module.exports = {
   ],
   theme: {
     screens: {
-      'md': '1032px',
+      'lg': '1200px',
+      'md': '1052px',
       'page-width': '1050px',
-      'sm': '640px'
+      'sm': '640px',
+      'xs': '430px'
     },
     extend: {
       colors: {

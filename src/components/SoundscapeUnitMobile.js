@@ -16,7 +16,7 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
     const imageUrl= require(`../images/${soundscape.imagePath}`);
     const audioUrl = require(`../soundscapes/${soundscape.audioPath}`);
     const { removeSoundscape: removeSoundscapeFromContext, changeVolume } = useMixContext();
-    const [volumeArray, setVolumeArray] = useState([1-volumeInit, 1]);
+    const [volumeArray, setVolumeArray] = useState([volumeInit, 1]);
     const [volume, setVolume] = useState(volumeInit);
     const [play, { pause, stop}] = useSound(audioUrl, {
         volume: volume,
@@ -24,8 +24,8 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
       });
     
     useEffect(() => {
-        setVolume(1 - volumeArray[0]);
-        changeVolume(soundscape._id, 1 - volumeArray[0])
+        setVolume(volumeArray[0]);
+        changeVolume(soundscape._id, volumeArray[0])
     }, [volumeArray]);
     
     const handleInputChange = (event) => {
@@ -46,13 +46,21 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
 
     return (
         <div className="h-full w-full flex flex-col items-center" style={backgroundStyle}>
-            <div className="p-2 flex w-full h-20 items-center">
+            <div className="p-2 flex w-full h-20 items-center justify-between">
                 <div className=" items-center flex justify-center rounded-sm w-3/12">
-                    <h1 className='text-3xl font-titleFont'>{soundscape.title}</h1> 
+                  <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
+                     <h1 className='text-3xl font-heading font-light text-darkGray'>{soundscape.title}</h1> 
+                  </div>
                 </div>
-                <div className="h-full w-full flex flex-col justify-center items-center" style={{ height: "70%"}}>
-                  {<RangeSlider
-                    className="single-thumb"
+                <div className="h-12 items-center flex justify-center rounded-sm ">
+                    <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
+                      <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}  isMuted={isMuted}/> 
+                    </div>
+                </div>
+            </div>
+            <div className="w-full h-20 px-6">
+              <RangeSlider
+                    className="single-thumb-horizontal"
                     orientation="horizontal"
                     min={0}
                     max={1}
@@ -61,30 +69,8 @@ const SoundscapeUnitMobile = ({ soundscapeUnit }) => {
                     rangeSlideDisabled={true}
                     value={volumeArray}
                     onInput={handleInputChange}
-                  />}
-                </div>
-                <div className="h-12 items-center flex justify-center rounded-sm ">
-                    <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}  isMuted={isMuted}/> 
-                </div>
+                    />
             </div>
-
-                
-              {/* <div className="h-full flex flex-col justify-center items-center" style={{ height: "70%"}}>
-                  <RangeSlider
-                  className="single-thumb"
-                  orientation="vertical"
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  thumbsDisabled={[false, true]}
-                  rangeSlideDisabled={true}
-                  value={volumeArray}
-                  onInput={handleInputChange}
-                  />
-              </div> */}
-              {/* <div className="h-16  border-2 items-center flex justify-center rounded-sm w-full" style={{backdropFilter: "blur(7px)"}}>
-                <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}/> 
-              </div> */}
         </div>
     );
 };

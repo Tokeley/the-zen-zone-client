@@ -35,7 +35,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
         <div class="items-center justify-normal flex w-full">
           <ul class="flex">
               <div class="group">
-                <div className="flex items-center">
+                <div className="flex items-center mr-1">
                   <SparkleIcon size={25}/>
                   <a href="soundscapes" class="block py-2 px-1 text-lg">Soundscapes</a>
                 </div>
@@ -43,7 +43,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
               </div>
 
               <div class="group">
-                <div className="flex items-center">
+                <div className="flex items-center mr-1">
                   <EmptyFavIcon size={25} strokewidth={1.5}/>
                   <a href="favourites" class="block py-2 px-1 text-lg">Favourites</a>
                 </div>
@@ -51,7 +51,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
               </div>
 
               <div class="group">
-                <div className="flex items-center">
+                <div className="flex items-center mr-1">
                   <MixIcon size={25} strokewidth={1.5}/>
                   <a href="mixes" class="block py-2 px-1 text-lg">Mixes</a>
                 </div>
@@ -59,7 +59,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
               </div>
 
               <div class="group">
-                <div className="flex items-center">
+                <div className="flex items-center mr-1">
                   <QuestionIcon size={25}/>
                   <a href="about" class="block py-2 px-1 text-lg">About</a>
                 </div>
@@ -88,7 +88,7 @@ const Desktopnavbar = ({saveMixDialog}) => {
         <div className="flex items-center justify-end w-full">
       {user && (
           <div className="flex items-center"> 
-            <div className="mr-3">
+            <div className="mr-3 hidden lg:flex">
               <span>{user.email}</span>
             </div>
             <button onClick={handleSaveMix} className="custom-btn mr-3">

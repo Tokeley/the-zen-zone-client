@@ -1,19 +1,26 @@
 import React from 'react'
 import { TrashIcon, ShareIcon } from './Icons';
+import { useMixContext  } from '../hooks/useMixContext';
 
 const MixRow = ({mix}) => {
 const date = new Date(mix.createdAt);
 const readableDate = date.toLocaleString("en-US");
+const { initMix } = useMixContext()
+
+const handleLoad = () => {
+    console.log("Load mix:" + JSON.stringify(mix.mix))
+    initMix(mix.mix)
+}
   return ( 
     <div className="mt-3 grid grid-cols-2 md:grid-cols-3">
         <div className='flex items-center pl-4 overflow-hidden '>
-            <p className='text-md sm:text-xl font-headingFont font-thin'>{mix.title}</p>
+            <p className='text-md sm:text-xl font-heading font-light'>{mix.title}</p>
         </div>
         <div className='hidden md:flex items-center justify-center'>
-            <p className='text-xl font-headingFont font-thin'>{readableDate}</p>
+            <p className='text-xl font-heading font-light'>{readableDate}</p>
         </div>
         <div className='flex justify-end pr-4 '>
-            <div className='flex items-center '>
+            <div className='flex items-center ' onClick={handleLoad}>
                 <button className="flex items-center custom-btn mr-2 h-8">Load</button>
             </div>
             <div className="flex items-center" onClick={()=> {console.log("Delete")}}>
