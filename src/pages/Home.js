@@ -13,18 +13,17 @@ const Home = () => {
   // State to track the screen size
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+
   // Function to update the screen size state
   const updateScreenSize = () => {
-    setIsSmallScreen(window.innerWidth < 640); // Using Tailwind's "sm" breakpoint (640px)
+    let unitWidth = window.innerWidth / mix.length
+    setIsSmallScreen(unitWidth < 250.0);
   };
 
   // Add event listener to update screen size state on window resize
   useEffect(() => {
     updateScreenSize(); // Initial check
     window.addEventListener("resize", updateScreenSize);
-    return () => {
-      window.removeEventListener("resize", updateScreenSize);
-    };
   }, []);
 
 
@@ -37,7 +36,7 @@ const Home = () => {
           ))}
         </div>
         :
-        <div className=" sm:hidden">
+        <div className="">
           {mix && mix.map((soundscapeUnit) => (
             <SoundscapeUnitMobile key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} style={{width: "100%"}}/>
           ))}
