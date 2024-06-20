@@ -12,18 +12,21 @@ const Home = () => {
 
   // State to track the screen size
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-
+  const [mixLength, setMixLength] = useState(0);
 
   // Function to update the screen size state
   const updateScreenSize = () => {
-    let unitWidth = window.innerWidth / mix.length
+    console.log("ML: " + mixLength)
+    let unitWidth = window.innerWidth / mixLength
     setIsSmallScreen(unitWidth < 250.0);
   };
 
   // Add event listener to update screen size state on window resize
   useEffect(() => {
+    setMixLength(mix.length)
     updateScreenSize(); // Initial check
     window.addEventListener("resize", updateScreenSize);
+  
   }, []);
 
 
