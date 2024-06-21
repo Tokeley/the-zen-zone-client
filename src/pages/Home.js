@@ -3,7 +3,6 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import {useMixContext} from "../hooks/useMixContext"
 import SoundscapeUnit from '../components/SoundscapeUnit'
-import SoundscapeUnitMobile from '../components/SoundscapeUnitMobile'
 
 const Home = () => {
   const {user} = useAuthContext()

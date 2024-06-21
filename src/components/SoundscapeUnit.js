@@ -23,13 +23,26 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile }) => {
       });
     
     useEffect(() => {
-        setVolume(1 - volumeArray[0]);
-        changeVolume(soundscape._id, 1 - volumeArray[0])
+        if (mobile){
+          setVolume(volumeArray[0]);
+          changeVolume(soundscape._id, volumeArray[0])
+        } else {
+          setVolume(1 - volumeArray[0]);
+          changeVolume(soundscape._id, 1 - volumeArray[0])
+        }
     }, [volumeArray]);
+
+    useEffect(() => {
+      if (mobile){
+        setVolumeArray([volumeInit, 1])
+      } else {
+        setVolumeArray([1-volumeInit, 1])
+      }
+    }, [mobile])
 
     
       const handleInputChange = (event) => {
-        setVolumeArray(event);
+          setVolumeArray(event)
       };
 
       const removeSoundscape = () => {

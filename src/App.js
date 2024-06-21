@@ -15,19 +15,18 @@ import { useUserMixesContext } from './hooks/useUserMixesContext';
 
 function App() {
   const { user } = useAuthContext();
-  const [open, setOpen] = useState(false);
+  const [openSaveMix, setOpenSaveMix] = useState(false);
   const [mixTitle, setMixTitle] = useState('');
   const { addMix } = useUserMixesContext()
 
   const toggleModal = () => {
-    setOpen(!open); // Toggles the modal state
+    setOpenSaveMix(!openSaveMix); // Toggles the modal state
   };
   const {mix} = useMixContext()
 
   const saveMix = async () => {
     if (!user) {return}
     toggleModal()
-
     await addMix(user.id, mixTitle, mix)
   }
 
@@ -47,7 +46,7 @@ function App() {
             <Route path="/mixes" element={user ? <Mixes /> : <Login />} />
           </Routes>
         </div>
-        {open && (
+        {openSaveMix && (
           <dialog open className="modal">
           <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4">
             <h3 className="text-2xl font-headingFont">Mix Title:</h3>
