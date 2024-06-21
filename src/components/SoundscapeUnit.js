@@ -21,11 +21,6 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile }) => {
         volume: volume,
         loop: true
       });
-
-    useEffect(() => {
-      console.log("MOUNTED:" + soundscape.title);
-    }, [])
-
     
     useEffect(() => {
         setVolume(1 - volumeArray[0]);
