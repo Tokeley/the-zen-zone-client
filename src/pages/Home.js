@@ -16,9 +16,7 @@ const Home = () => {
 
   // Function to update the screen size state
   const updateScreenSize = () => {
-    console.log("ML: " + mixLength)
-    let unitWidth = window.innerWidth / mixLength
-    setIsSmallScreen(unitWidth < 250.0);
+    setIsSmallScreen(window.innerWidth < 1051);
   };
 
   // Add event listener to update screen size state on window resize
@@ -31,21 +29,11 @@ const Home = () => {
 
 
   return (
-    <>
-      { !isSmallScreen ? 
-        <div className="text-darkGray flex" style={{width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
+        <div className="text-darkGray" style={isSmallScreen ? {} : { display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
           {mix && mix.map((soundscapeUnit) => (
-            <SoundscapeUnit key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} style={{width: "100%"}}/>
+            <SoundscapeUnit key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} mobile={isSmallScreen} style={{width: "100%"}}/>
           ))}
         </div>
-        :
-        <div className="">
-          {mix && mix.map((soundscapeUnit) => (
-            <SoundscapeUnitMobile key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} style={{width: "100%"}}/>
-          ))}
-        </div>
-      }
-    </>
   )
 }
 

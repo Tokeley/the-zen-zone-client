@@ -8,13 +8,12 @@ import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark, MixIcon } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
 
-const MobileNavbar = ({saveMixDialog}) => {
+const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
 
     const { logout } = useLogout();
     const { user } = useAuthContext();
     const { dispatch} = useNavbarHeightContext();
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
-    const [playing, setPlaying] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const { saveMix } = useMixContext
 
@@ -27,7 +26,6 @@ const MobileNavbar = ({saveMixDialog}) => {
     }
 
     const handlePlayButtonClick = () => {
-        soundDispatch({type: 'SET_PLAYING', payload: !playing});
         setPlaying(!playing);
     }
 
@@ -55,7 +53,7 @@ const MobileNavbar = ({saveMixDialog}) => {
                 <div className="w-2/12  flex justify-center">
                     <div className="hover:cursor-pointer hover:scale-110 transition-transform duration-300 " onClick={handlePlayButtonClick}>
                     {
-                    playing ? <PauseIcon size={50}/> : <PlayIcon size={50}/>
+                    !playing ? <PauseIcon size={50}/> : <PlayIcon size={50}/>
                     }
                 </div>
                 </div>

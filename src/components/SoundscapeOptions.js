@@ -19,7 +19,6 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
 
     useEffect(() => {
         setFavourited(favourites.some(item => item._id == soundscape._id))
-        console.log("REFRESH THE FAVS")
     },[favourites, user, soundscape]);
     
     // Adds sounscape to user favourites field in database
@@ -42,11 +41,16 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
     
     useEffect(() => {
         if (playing) {
-            thisPlaying ? play() : pause();
+            if (thisPlaying){
+                pause()
+                play()
+            } else {
+                pause()
+            }
         } else {
-            pause();
+            pause()
         }
-    },[thisPlaying, playing, play, pause]);
+    },[thisPlaying, playing]);
 
     const iconSize = 40;
 
