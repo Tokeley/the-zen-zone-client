@@ -1,12 +1,12 @@
 import React from 'react'
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark, MixIcon } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
 
@@ -16,6 +16,7 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
     const [menuOpen, setMenuOpen] = useState(false);
     const { saveMix } = useMixContext
+    const navigate = useNavigate(); 
 
     const handleLogout = () => {
         logout()
@@ -23,6 +24,7 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
 
     const handleSaveMix = () => {
         saveMixDialog()
+        navigate('/');
     }
 
     const handlePlayButtonClick = () => {
@@ -100,11 +102,11 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
                                 <div className="flex justify-center mb-2">
                                 <span>{user.email}</span>
                                 </div>
-                                <div className="flex-col items-center">
-                                    <button onClick={handleSaveMix} className="custom-btn mr-1">
+                                <div className="flex items-center justify-around">
+                                    <button onClick={handleSaveMix} className="custom-btn flex">
                                         Save Mix
                                     </button>
-                                    <button onClick={handleLogout} className="custom-btn ml-1">
+                                    <button onClick={handleLogout} className="custom-btn flex">
                                         Log-out
                                     </button>
                                 </div>

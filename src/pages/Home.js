@@ -28,7 +28,7 @@ const Home = () => {
 
 
   return (
-        <div className="text-darkGray" style={isSmallScreen ? {} : { display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
+        <div  className={`text-darkGray ${isSmallScreen ? 'drop-shadow-xl' : ''}`} style={isSmallScreen ? {} : { display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
           {mix && mix.map((soundscapeUnit) => (
             <SoundscapeUnit key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} mobile={isSmallScreen} style={{width: "100%"}}/>
           ))}

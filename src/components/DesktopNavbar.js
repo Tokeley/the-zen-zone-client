@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Updated import
+import { Link, useNavigate } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext';
@@ -14,7 +14,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
     const { dispatch } = useNavbarHeightContext();
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
     const { saveMix } = useMixContext();
-    const navigate = useNavigate(); // Using useNavigate hook
+    const navigate = useNavigate(); 
 
     const handleLogout = () => {
         logout();
@@ -22,7 +22,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
 
     const handleSaveMix = () => {
         saveMixDialog();
-        navigate('/'); // Navigate to home page after saving mix
+        navigate('/');
     };
 
     const handlePlayButtonClick = () => {
