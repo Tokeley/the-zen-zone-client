@@ -25,7 +25,7 @@ const Soundscapes = () => {
         <div className="border-b border-w-full mx-7"></div>
         {isLoading ? (
           <div class="w-full flex justify-center items-center">
-              <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24"></div>
+            <h2>Loading...</h2>
           </div>
       
         ) : (

@@ -8,7 +8,7 @@ export const useRemoveMix= () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('/api/user/addMix', {
+    const response = await fetch('/api/user/removeMix', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ userId, mixId })

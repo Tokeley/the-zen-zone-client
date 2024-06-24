@@ -13,28 +13,43 @@ import { useMixContext } from './hooks/useMixContext';
 import { useAddMix } from './hooks/useAddMix'
 import { useUserMixesContext } from './hooks/useUserMixesContext';
 
+
 function App() {
   const { user } = useAuthContext();
   const [openSaveMix, setOpenSaveMix] = useState(false);
+  const [openDeleteMix, setOpenDeleteMix] = useState(false);
   const [mixTitle, setMixTitle] = useState('');
   const { addMix } = useUserMixesContext()
+  const { removeMix } = useUserMixesContext()
+  const [deleteMix, setDeleteMix] = useState(null)
 
-  const toggleModal = () => {
+  const toggleSaveMixModal = () => {
     setOpenSaveMix(!openSaveMix); // Toggles the modal state
   };
+
+  const toggleDeleteMixModal = (mix) => {
+    setDeleteMix(mix)
+    setOpenDeleteMix(!openDeleteMix); // Toggles the modal state
+  };
+
   const {mix} = useMixContext()
 
   const saveMix = async () => {
     if (!user) {return}
-    toggleModal()
+    toggleSaveMixModal()
     await addMix(user.id, mixTitle, mix)
   }
 
+  const delteMix = async () => {
+    if (!user) {return}
+    toggleDeleteMixModal()
+    await removeMix(user.id, deleteMix._id)
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar saveMixDialog={toggleModal}/>
+        <Navbar saveMixDialog={toggleSaveMixModal}/>
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,7 +58,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
-            <Route path="/mixes" element={user ? <Mixes /> : <Login />} />
+            <Route path="/mixes" element={user ? <Mixes deleteMixDialog={toggleDeleteMixModal}/> : <Login />} />
           </Routes>
         </div>
         {openSaveMix && (
@@ -59,10 +74,22 @@ function App() {
             />
             <div className="modal-action mt-4 flex justify-center">
               <button className="custom-btn" onClick={saveMix}>Save</button>
-              <button className="custom-btn" onClick={toggleModal}>Cancel</button>
+              <button className="custom-btn" onClick={toggleSaveMixModal}>Cancel</button>
             </div>
           </div>
         </dialog>
+        )}
+        {openDeleteMix && (
+          <dialog open className="modal">
+            <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4">
+              <h3 className="text-2xl font-headingFont text-center">Delete Mix?</h3>
+              <h5 className="text-md font-headingFont text-center">{deleteMix.title}</h5>
+              <div className="modal-action mt-4 flex justify-center">
+                <button className="custom-btn" onClick={delteMix}>Delete</button>
+                <button className="custom-btn" onClick={toggleDeleteMixModal}>Cancel</button>
+              </div>
+            </div>
+          </dialog>
         )}
       </BrowserRouter>
     </div>
