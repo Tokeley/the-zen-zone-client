@@ -2,20 +2,36 @@ import React from 'react'
 import { TrashIcon, ShareIcon } from './Icons';
 import { useMixContext  } from '../hooks/useMixContext';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 
-const MixRow = ({mix, deleteMixDialog}) => {
+const MixRow = ({mix, deleteMixDialog, shareMixDialog}) => {
   const date = new Date(mix.createdAt);
   const readableDate = date.toLocaleString("en-US");
   const { initMix } = useMixContext()
   const { user } = useAuthContext()
+  const navigate = useNavigate(); 
 
   const handleLoad = () => {
-      console.log("Load mix:" + JSON.stringify(mix.mix))
       initMix(mix.mix)
+      navigate('/');
   }
 
   const handleDelete = async () => {
     deleteMixDialog(mix)
+  }
+
+  const handleShare = async () => {
+    // Serialize to JSON string
+    const jsonString = JSON.stringify(mix.mix);
+
+    // Encode to base64
+    const base64Encoded = btoa(jsonString);
+
+    // Create a URL with the encoded data as a parameter
+    const shareableLink = `http://localhost:3000/share/${base64Encoded}`; // TODO: change to actual website name
+
+    console.log(shareableLink)
+    shareMixDialog(shareableLink, mix.title)
   }
 
   return ( 
@@ -33,7 +49,7 @@ const MixRow = ({mix, deleteMixDialog}) => {
             <div className="flex items-center" onClick={handleDelete}>
               <TrashIcon size={30} strokewidth={1}/>
             </div>
-            <div className="flex items-center" onClick={()=> {console.log("Share")}}>
+            <div className="flex items-center" onClick={handleShare}>
               <ShareIcon size={30} strokewidth={1}/>
             </div>
         </div>

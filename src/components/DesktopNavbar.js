@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext';
@@ -15,6 +15,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
     const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
     const { saveMix } = useMixContext();
     const navigate = useNavigate(); 
+    const location = useLocation();
 
     const handleLogout = () => {
         logout();
@@ -26,7 +27,12 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
     };
 
     const handlePlayButtonClick = () => {
+      console.log(location.pa)
+      if (location.pathname === '/') {
         setPlaying(!playing);
+      } else {
+        navigate('/');
+      }
     };
 
     return (
@@ -34,15 +40,15 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
             <div className="items-center justify-normal flex w-full">
                 <ul className="flex">
                     <div className="group">
-                        <div className="flex items-center mr-1">
+                        <div className="flex items-center mr-1 " onClick={() =>{navigate('/soundscapes')}}>
                             <SparkleIcon size={25} />
-                            <a href="soundscapes" className="block py-2 px-1 text-lg">Soundscapes</a>
+                            <a className="block py-2 px-1 text-lg ">Soundscapes</a>
                         </div>
                         <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
                     </div>
 
                     <div className="group">
-                        <div className="flex items-center mr-1">
+                        <div className="flex items-center mr-1" onClick={() =>{navigate('/favourites')}}>
                             <EmptyFavIcon size={25} strokewidth={1.5} />
                             <a href="favourites" className="block py-2 px-1 text-lg">Favourites</a>
                         </div>
@@ -50,7 +56,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                     </div>
 
                     <div className="group">
-                        <div className="flex items-center mr-1">
+                        <div className="flex items-center mr-1" onClick={() =>{navigate('/mixes')}}>
                             <MixIcon size={25} strokewidth={1.5} />
                             <a href="mixes" className="block py-2 px-1 text-lg">Mixes</a>
                         </div>
@@ -58,7 +64,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                     </div>
 
                     <div className="group">
-                        <div className="flex items-center mr-1">
+                        <div className="flex items-center mr-1" onClick={() =>{navigate('/about')}}>
                             <QuestionIcon size={25} />
                             <a href="about" className="block py-2 px-1 text-lg">About</a>
                         </div>

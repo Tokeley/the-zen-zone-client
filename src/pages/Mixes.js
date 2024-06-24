@@ -2,7 +2,7 @@ import React from 'react'
 import { useUserMixesContext } from '../hooks/useUserMixesContext'
 import MixRow from '../components/MixRow'
 
-const Mixes = ({deleteMixDialog}) => {
+const Mixes = ({deleteMixDialog, shareMixDialog}) => {
   const { mixes, isLoading, error } = useUserMixesContext()
   return (
     <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
@@ -16,7 +16,7 @@ const Mixes = ({deleteMixDialog}) => {
         <div className=" mx-7">
         {mixes && 
           mixes.map(mix => (
-            <MixRow mix={mix} deleteMixDialog={deleteMixDialog}/>
+            <MixRow mix={mix} deleteMixDialog={deleteMixDialog} shareMixDialog={shareMixDialog}/>
           ))}
         </div>
       }
