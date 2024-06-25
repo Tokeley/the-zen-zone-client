@@ -22,9 +22,13 @@ const Home = () => {
     if (encodedMix) {
       const fetchMix = async () => {
         try {
-          const response = await getMix(encodedMix)
-          const mixFull = JSON.parse(response)
+          const decodedMix = atob(encodedMix)
+          const response = await getMix(decodedMix)
+          console.log(response)
+          const mixFull = response
           const mix = mixFull.mix
+          console.log("MIX: " + mix) 
+          
           initMix(mix); // Update state with the fetched soundscapes
         } catch (error) {
           console.error('Error fetching mix:', error);

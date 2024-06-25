@@ -8,12 +8,14 @@ export const useGetMix = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch(`/api/mix/getMix/${mixId}`, {
+    const response = await fetch(`/api/mixes/${mixId}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     })
 
     const json = await response.json()
+
+    console.log("RES: " + json)
     if (!response.ok) {
       setIsLoading(false)
       setError(json.error)

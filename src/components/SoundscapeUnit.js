@@ -12,8 +12,10 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile }) => {
     const volumeInit = soundscapeUnit.volume
     const isMuted = soundscapeUnit.isMuted
 
-    const imageUrl= require(`../images/${soundscape.imagePath}`);
-    const audioUrl = require(`../soundscapes/${soundscape.audioPath}`);
+    console.log(soundscape.imagePath)
+
+    const imageUrl = soundscape.imagePath ? require(`../images/${soundscape.imagePath}`) : null;
+    const audioUrl = soundscape.audioPath ? require(`../soundscapes/${soundscape.audioPath}`) : null;
     const { removeSoundscape: removeSoundscapeFromContext, changeVolume} = useMixContext();
     const [volumeArray, setVolumeArray] = useState([1-volumeInit, 1]);
     const [volume, setVolume] = useState(volumeInit);
