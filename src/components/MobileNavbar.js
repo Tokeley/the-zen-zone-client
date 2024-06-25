@@ -6,7 +6,7 @@ import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark, MixIcon } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
 
@@ -17,6 +17,7 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const { saveMix } = useMixContext
     const navigate = useNavigate(); 
+    const location = useLocation();
 
     const handleLogout = () => {
         logout()
@@ -28,8 +29,13 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     }
 
     const handlePlayButtonClick = () => {
-        setPlaying(!playing);
-    }
+        console.log(location.pa)
+        if (location.pathname === '/') {
+          setPlaying(!playing);
+        } else {
+          navigate('/');
+        }
+      };
 
     const handleMenuButtonClick = () => {
         setMenuOpen(!menuOpen)

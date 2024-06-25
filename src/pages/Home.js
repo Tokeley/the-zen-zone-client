@@ -4,6 +4,7 @@ import { useNavbarHeightContext } from '../hooks/useNavbarHeightContext'
 import {useMixContext} from "../hooks/useMixContext"
 import SoundscapeUnit from '../components/SoundscapeUnit'
 import { useParams } from 'react-router-dom';
+import { useGetMix } from '../hooks/useGetMix';
 
 const Home = () => {
   const { encodedMix } = useParams();
@@ -11,6 +12,7 @@ const Home = () => {
   const {mix} = useMixContext()
   const {navHeight} = useNavbarHeightContext()
   const { initMix } = useMixContext()
+  const { getMix, isLoading, error } = useGetMix();
 
   // State to track the screen size
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -18,14 +20,18 @@ const Home = () => {
 
   useEffect(() => {
     if (encodedMix) {
-      console.log("EM: " + encodedMix)
-      try {
-        const decodedData = atob(encodedMix);
-        const parsedData = JSON.parse(decodedData);
-        initMix(parsedData)
-      } catch (error) {
-        console.error('Error decoding or parsing mix data:', error);
-      }
+      const fetchMix = async () => {
+        try {
+          const response = await getMix(encodedMix)
+          const mixFull = JSON.parse(response)
+          const mix = mixFull.mix
+          initMix(mix); // Update state with the fetched soundscapes
+        } catch (error) {
+          console.error('Error fetching mix:', error);
+        }
+      };
+  
+      fetchMix();
     }
   }, [encodedMix]);
 

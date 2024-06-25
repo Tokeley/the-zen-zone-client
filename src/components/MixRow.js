@@ -21,15 +21,14 @@ const MixRow = ({mix, deleteMixDialog, shareMixDialog}) => {
   }
 
   const handleShare = async () => {
-    // Serialize to JSON string
-    const jsonString = JSON.stringify(mix.mix);
-
+    const mixId = mix._id
+    console.log(mixId)
     // Encode to base64
-    const base64Encoded = btoa(jsonString);
+    const base64Encoded = btoa(mixId);
 
     // Create a URL with the encoded data as a parameter
     const shareableLink = `http://localhost:3000/share/${base64Encoded}`; // TODO: change to actual website name
-
+    console.log(shareableLink)
     console.log(shareableLink)
     shareMixDialog(shareableLink, mix.title)
   }
