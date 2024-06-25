@@ -143,7 +143,7 @@ function App() {
                 <h5 className="text-md font-headingFont text-center break-all">{shareLink}</h5>
               </div>
               <button
-                className="border-2 ml-2 font-bold py-1 px-4 h-10"
+                className="border-2 ml-2 font-bold py-1 px-4 h-10 w-20 flex items-center justify-center"
                 onClick={() => handleCopyToClipboard(shareLink)}
               >
                 {copied ? <Tick size={30} /> : 'Copy'}
