@@ -8,9 +8,23 @@ export const useAddMix= () => {
     setIsLoading(true)
     setError(null)
 
+    // Retrieve the user object from localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (!user || !user.token) {
+      setError('User is not authenticated');
+      setIsLoading(false);
+      return;
+    }
+
+    const token = user.token;
+
     const response = await fetch('/api/user/addMix', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({ userId, title, mix })
     })
 

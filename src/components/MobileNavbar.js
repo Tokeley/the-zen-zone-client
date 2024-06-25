@@ -112,7 +112,8 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
                                     <button onClick={handleSaveMix} className="custom-btn flex">
                                         Save Mix
                                     </button>
-                                    <button onClick={handleLogout} className="custom-btn flex">
+                                    <div className="w-2"></div>
+                                    <button onClick={handleLogout} className="custom-btn flex ">
                                         Log-out
                                     </button>
                                 </div>
