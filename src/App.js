@@ -149,7 +149,6 @@ function App() {
                 {copied ? <Tick size={30} /> : 'Copy'}
               </button>
             </div>
-            <button className="custom-btn" onClick={toggleShareMixModal}>Cancel</button>
             <div className="w-2/3 border-t border-gray-300 my-4"></div>
             <div className="flex justify-between w-2/3">
               <div onClick={() => handleShareClick("Facebook")} className="cursor-pointer">
@@ -168,6 +167,8 @@ function App() {
                 <Pinterest />
               </div>
             </div>
+            <div className="w-2/3 border-t border-gray-300 my-4"></div>
+            <button className="custom-btn" onClick={toggleShareMixModal}>Cancel</button>
           </div>
         </dialog>
       )}
