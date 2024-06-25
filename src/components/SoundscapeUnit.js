@@ -7,7 +7,7 @@ import '../style.css';
 import SoundscapeOptions from './SoundscapeOptions';
 import { useMixContext } from '../hooks/useMixContext'
 
-const SoundscapeUnit = ({ soundscapeUnit, mobile }) => {
+const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
     const soundscape = soundscapeUnit.soundscape
     const volumeInit = soundscapeUnit.volume
     const isMuted = soundscapeUnit.isMuted
@@ -48,6 +48,9 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile }) => {
       };
 
       const removeSoundscape = () => {
+        if (lastSoundscape){
+          return;
+        }
         stop();
         removeSoundscapeFromContext(soundscape._id);
       }
