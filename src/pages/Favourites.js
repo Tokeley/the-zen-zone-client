@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import SoundscapeCard from '../components/SoundscapeCard';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useFavouritesContext } from '../hooks/useFavouritesContext';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Favourites = () => {
-  //const { user } = useAuthContext();
-  //const [favourites, setFavourites] = useState([]);
-  //const { getUserFavourites, isLoading, error, response } = useAPI();
   const { favourites, isLoading, error } = useFavouritesContext()
+  const navigate = useNavigate(); 
 
 
 
@@ -25,10 +24,19 @@ const Favourites = () => {
           </div>
         :
           <div className="flex flex-wrap justify-center">
-              {favourites &&
+              {favourites.length > 0 ?
                   favourites.map((favourite) => (
                       <SoundscapeCard key={favourite._id} soundscape={favourite} />
-                  ))}
+                  ))
+                
+                :
+                <>
+                  <h1 className="mt-24 text-3xl font-heading font-light text-center pb-2">No Favourites</h1>
+                  <div className="w-full flex justify-center" >
+                    <button onClick={() => navigate('/soundscapes')}  className="custom-btn items-center">Browse Soundscapes</button>
+                  </div>
+                </>
+              }
           </div>
         }
         {error && <div className="text-red-500 mt-2">{error}</div>}

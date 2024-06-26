@@ -99,7 +99,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
             <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
-            <Route path="/mixes" element={user ? <Mixes deleteMixDialog={toggleDeleteMixModal} shareMixDialog={toggleShareMixModal} /> : <Login />} />
+            <Route path="/mixes" element={user ? <Mixes deleteMixDialog={toggleDeleteMixModal} shareMixDialog={toggleShareMixModal} saveMixDialog={toggleSaveMixModal} /> : <Login />} />
           </Routes>
         </div>
       </BrowserRouter>
