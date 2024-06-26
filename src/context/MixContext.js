@@ -2,12 +2,14 @@
 import { createContext, useReducer, useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useAddMix } from  '../hooks/useAddMix'
+import { useGetRandomSoundscape } from '../hooks/useGetRandomSoundscape'
 
 export const MixContext = createContext()
 
 export const MixContextProvider = ({ children }) => {
   const [mix, setMix] = useState([]);
   const { user } = useAuthContext();
+  const { getRandomSoundscape } = useGetRandomSoundscape()
   
   const addSoundscape = (soundscape, vol, isMuted) => {
     if (vol > 1 || vol < 0) {
@@ -87,6 +89,12 @@ export const MixContextProvider = ({ children }) => {
     if (localStorage.getItem("Mix")){
       const mix = JSON.parse(localStorage.getItem("Mix"))
       setMix(mix);
+    } else {
+      getRandomSoundscape().then((result) => {
+        console.log( result)
+        addSoundscape(result, 0.5, false)
+      }).catch(console.error)
+
     }
   }, []); // Empty dependency array ensures this effect runs only once when component mounts
 

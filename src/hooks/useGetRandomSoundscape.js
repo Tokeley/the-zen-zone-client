@@ -9,7 +9,7 @@ export const useGetRandomSoundscape = () => {
     setError(null)
 
     const response = await fetch('/api/soundscapes/random', {
-      method: 'POST',
+      method: 'GET',
       headers: {'Content-Type': 'application/json'},
     })
 

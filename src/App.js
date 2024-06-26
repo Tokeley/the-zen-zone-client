@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Tick, Facebook, WhatsApp, Pinterest, Twitter } from './components/Icons';
+import { Facebook, WhatsApp, Pinterest, Twitter, TickThick } from './components/Icons';
 import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/Home';
 import Soundscapes from './pages/Soundscapes';
@@ -146,7 +146,7 @@ function App() {
                 className="border-2 ml-2 font-bold py-1 px-4 h-10 w-20 flex items-center justify-center"
                 onClick={() => handleCopyToClipboard(shareLink)}
               >
-                {copied ? <Tick size={30} /> : 'Copy'}
+                {copied ? <TickThick size={30} /> : 'Copy'}
               </button>
             </div>
             <div className="w-2/3 border-t border-gray-300 my-4"></div>
