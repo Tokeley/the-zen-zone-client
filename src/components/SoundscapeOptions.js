@@ -27,7 +27,8 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
             navigate("/login")
         }
         setFavourited(true)
-        await addFavourite(user.id, soundscape._id)
+
+        await addFavourite(soundscape._id)
     }
 
     // Removes sounscape from user favourites field in database
@@ -36,7 +37,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
             navigate("/login")
         }
         setFavourited(false)
-        await removeFavourite(user.id, soundscape._id)
+        await removeFavourite(soundscape._id)
     }
     
     useEffect(() => {

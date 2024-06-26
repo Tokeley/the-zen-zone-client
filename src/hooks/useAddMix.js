@@ -4,7 +4,7 @@ export const useAddMix= () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const addMix = async (userId, title, mix) => {
+  const addMix = async (title, mix) => {
     setIsLoading(true)
     setError(null)
 
@@ -25,7 +25,7 @@ export const useAddMix= () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ userId, title, mix })
+      body: JSON.stringify({ title, mix })
     })
 
     const json = await response.json()

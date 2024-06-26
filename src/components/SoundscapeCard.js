@@ -26,7 +26,7 @@ const SoundscapeCard = ({soundscape}) => {
       navigate("/login")
     }
     setFavourited(true)
-    await addFavourite(user.id, soundscape._id)
+    await addFavourite(soundscape._id)
   }
 
   // Removes sounscape from user favourites field in database
@@ -35,7 +35,7 @@ const SoundscapeCard = ({soundscape}) => {
       navigate("/login")
     }
     setFavourited(false)
-    await removeFavourite(user.id, soundscape._id)
+    await removeFavourite(soundscape._id)
   }
 
   const handleAdd = () => {

@@ -44,7 +44,13 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                             <SparkleIcon size={25} />
                             <a className="block py-2 px-1 text-lg ">Soundscapes</a>
                         </div>
-                        <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        {
+                            location.pathname === '/soundscapes' 
+                            ?
+                            <div className="h-0.5 bg-gray w-full"></div>
+                            :
+                            <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        }
                     </div>
 
                     <div className="group">
@@ -52,7 +58,13 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                             <EmptyFavIcon size={25} strokewidth={1.5} />
                             <a href="favourites" className="block py-2 px-1 text-lg">Favourites</a>
                         </div>
-                        <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        {
+                            location.pathname === '/favourites' 
+                            ?
+                            <div className="h-0.5 bg-gray w-full"></div>
+                            :
+                            <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        }
                     </div>
 
                     <div className="group">
@@ -60,7 +72,13 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                             <MixIcon size={25} strokewidth={1.5} />
                             <a href="mixes" className="block py-2 px-1 text-lg">Mixes</a>
                         </div>
-                        <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        {
+                            location.pathname === '/mixes' 
+                            ?
+                            <div className="h-0.5 bg-gray w-full"></div>
+                            :
+                            <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        }
                     </div>
 
                     <div className="group">
@@ -68,7 +86,13 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                             <QuestionIcon size={25} />
                             <a href="about" className="block py-2 px-1 text-lg">About</a>
                         </div>
-                        <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        {
+                            location.pathname === '/about' 
+                            ?
+                            <div className="h-0.5 bg-gray w-full"></div>
+                            :
+                            <div className="w-0 h-0.5 bg-gray transition-all duration-100 ease-out group-hover:w-full"></div>
+                        }
                     </div>
                 </ul>
             </div>

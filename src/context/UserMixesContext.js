@@ -14,20 +14,18 @@ export const UserMixesContextProvider = ({ children }) => {
   const { removeMix: remove } = useRemoveMix();
   const { getMixes } = useGetMixes()
 
-  // Add a favorite
-  const addMix = async (userId, title, mix) => {
+  const addMix = async (title, mix) => {
     try {
-      const response = await add(userId, title, mix);
+      const response = await add(title, mix);
       setMixes(response.mixes);
     } catch (error) {
       console.error('Error adding mix:', error);
     }
   };
 
-  // Remove a favorite
-  const removeMix = async (userId, mixId) => {
+  const removeMix = async (mixId) => {
     try {
-      const response = await remove(userId, mixId);
+      const response = await remove(mixId);
       setMixes(response.mixes);
     } catch (error) {
       console.error('Error removing favourite:', error);

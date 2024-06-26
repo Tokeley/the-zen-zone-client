@@ -48,13 +48,13 @@ function App() {
   const saveMix = async () => {
     if (!user) { return; }
     toggleSaveMixModal();
-    await addMix(user.id, mixTitle, mix);
+    await addMix(mixTitle, mix);
   };
 
   const deleteMix = async () => {
     if (!user) { return; }
     toggleDeleteMixModal();
-    await removeMix(user.id, mixToDelete._id);
+    await removeMix(mixToDelete._id);
   };
 
   const handleCopyToClipboard = (text) => {

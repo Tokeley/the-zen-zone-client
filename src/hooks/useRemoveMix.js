@@ -4,7 +4,7 @@ export const useRemoveMix= () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const removeMix = async (userId, mixId) => {
+  const removeMix = async (mixId) => {
     setIsLoading(true)
     setError(null)
 

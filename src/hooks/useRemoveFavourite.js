@@ -4,7 +4,7 @@ export const useRemoveFavourite = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const removeFavourite = async (userId, soundscapeId) => {
+  const removeFavourite = async (soundscapeId) => {
     setIsLoading(true)
     setError(null)
 

@@ -25,9 +25,9 @@ export const FavouritesContextProvider = ({ children }) => {
   };
 
   // Remove a favorite
-  const removeFavourite = async (userId, soundscape) => {
+  const removeFavourite = async ( soundscape) => {
     try {
-      const response = await remove(userId, soundscape);
+      const response = await remove( soundscape);
       setFavourites(response.favourites);
     } catch (error) {
       console.error('Error removing favourite:', error);
