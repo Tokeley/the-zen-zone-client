@@ -42,7 +42,7 @@ const Desktopnavbar = ({ saveMixDialog, setPlaying, playing }) => {
                     <div className="group">
                         <div className="flex items-center mr-1 " onClick={() =>{navigate('/soundscapes')}}>
                             <SparkleIcon size={25} />
-                            <a className="block py-2 px-1 text-lg ">Soundscapes</a>
+                            <a href="soundscapes" className="block py-2 px-1 text-lg ">Soundscapes</a>
                         </div>
                         {
                             location.pathname === '/soundscapes' 
