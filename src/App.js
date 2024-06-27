@@ -105,7 +105,7 @@ function App() {
       </BrowserRouter>
       {openSaveMix && (
         <dialog open className="modal">
-          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4">
+          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4 bg-offwhite">
             <h3 className="text-2xl font-headingFont">Mix Title:</h3>
             <input
               type="text"
@@ -123,7 +123,7 @@ function App() {
       )}
       {openDeleteMix && (
         <dialog open className="modal">
-          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4">
+          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4 bg-offwhite">
             <h3 className="text-2xl font-headingFont text-center">Delete Mix?</h3>
             <h5 className="text-md font-headingFont text-center">{mixToDelete.title}</h5>
             <div className="modal-action mt-4 flex justify-center">
@@ -135,7 +135,7 @@ function App() {
       )}
       {openShareMix && (
         <dialog open className="modal">
-          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4 flex flex-col items-center">
+          <div className="modal-box shadow-2xl rounded-none border-2 border-gray-300 p-4 flex flex-col items-center bg-offwhite">
             <h3 className="text-2xl font-headingFont text-center">Share Mix</h3>
             <h5 className="text-md font-headingFont text-center">{shareMixName}</h5>
             <div className="flex items-center justify-center mt-4 mb-2">
@@ -143,7 +143,7 @@ function App() {
                 <h5 className="text-md font-headingFont text-center break-all">{shareLink}</h5>
               </div>
               <button
-                className="border-2 ml-2 font-bold py-1 px-4 h-10 w-20 flex items-center justify-center"
+                className="border-2 ml-2 py-1 px-4 h-10 w-20 flex items-center justify-center custom-btn"
                 onClick={() => handleCopyToClipboard(shareLink)}
               >
                 {copied ? <TickThick size={30} /> : 'Copy'}

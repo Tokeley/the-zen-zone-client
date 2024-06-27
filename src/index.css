@@ -6,5 +6,5 @@
 @import 'tailwindcss/utilities';
 
 .custom-btn {
-    @apply  py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider border-2 border-gray hover:border-lightGray hover:text-lightGray  transition ease-out duration-500;
+    @apply  py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider border-2 border-gray hover:bg-white hover:text-lightGray  transition ease-out duration-500;
 }
