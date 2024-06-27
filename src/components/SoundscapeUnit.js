@@ -75,9 +75,9 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
                     <RangeSlider
                     className="single-thumb"
                     orientation="vertical"
-                    min={0}
+                    min={0.3}
                     max={1}
-                    step={0.01}
+                    step={0.001}
                     thumbsDisabled={[false, true]}
                     rangeSlideDisabled={true}
                     value={volumeArray}
@@ -109,8 +109,8 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
                     className="single-thumb-horizontal"
                     orientation="horizontal"
                     min={0}
-                    max={1}
-                    step={0.01}
+                    max={0.7}
+                    step={0.001}
                     thumbsDisabled={[false, true]}
                     rangeSlideDisabled={true}
                     value={volumeArray}
