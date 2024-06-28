@@ -20,7 +20,7 @@ export const useAddFavourite = () => {
 
     const token = user.token;
     console.log("TOKEN: " + token)
-    const response = await fetch('/api/user/addSoundscapeToFavourites', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/user/addSoundscapeToFavourites', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ export const useGetFavourites = () => {
  
      const token = user.token;
 
-    const response = await fetch('/api/user/getFavourites', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/user/getFavourites', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

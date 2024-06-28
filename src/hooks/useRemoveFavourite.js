@@ -19,7 +19,7 @@ export const useRemoveFavourite = () => {
 
     const token = user.token;
 
-    const response = await fetch('/api/user/removeSoundscapeFromFavourites', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/user/removeSoundscapeFromFavourites', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

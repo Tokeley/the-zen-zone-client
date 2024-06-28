@@ -8,7 +8,7 @@ export const useGetMix = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch(`/api/mixes/${mixId}`, {
+    const response = await fetch(`https://the-zen-zone-server.vercel.app/api/mixes/${mixId}`, {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     })

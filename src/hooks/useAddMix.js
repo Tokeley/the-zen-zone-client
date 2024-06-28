@@ -19,7 +19,7 @@ export const useAddMix= () => {
 
     const token = user.token;
 
-    const response = await fetch('/api/user/addMix', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/user/addMix', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

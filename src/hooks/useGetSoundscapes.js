@@ -8,7 +8,7 @@ export const useGetSoundscapes = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('/api/soundscapes/', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/soundscapes/', {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     })

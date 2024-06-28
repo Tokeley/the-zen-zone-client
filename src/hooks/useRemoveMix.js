@@ -19,7 +19,7 @@ export const useRemoveMix= () => {
 
     const token = user.token;
     
-    const response = await fetch('/api/user/removeMix', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/user/removeMix', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
