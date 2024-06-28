@@ -1,5 +1,5 @@
 {
-  "proxy": "https://the-zen-zone-server.vercel.app/",
+  "proxy": "https://the-zen-zone-server.vercel.app",
   "name": "the-zen-zone-client",
   "version": "0.1.0",
   "private": true,
