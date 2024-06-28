@@ -27,7 +27,7 @@ const MixRow = ({mix, deleteMixDialog, shareMixDialog}) => {
     const base64Encoded = btoa(mixId);
 
     // Create a URL with the encoded data as a parameter
-    const shareableLink = `http://localhost:3000/share/${base64Encoded}`; // TODO: change to actual website name
+    const shareableLink = `https://the-zen-zone-client.vercel.app/share/${base64Encoded}`; // TODO: change to actual website name
     console.log(shareableLink)
     console.log(shareableLink)
     shareMixDialog(shareableLink, mix.title)
