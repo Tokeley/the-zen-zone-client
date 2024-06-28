@@ -8,7 +8,7 @@ export const useGetRandomSoundscape = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('/api/soundscapes/random', {
+    const response = await fetch('https://the-zen-zone-server.vercel.app/api/soundscapes/random', {
       method: 'GET',
       headers: {'Content-Type': 'application/json'},
     })
