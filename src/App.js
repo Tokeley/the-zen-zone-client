@@ -87,7 +87,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App text-gray border-gray">
       <BrowserRouter>
         <Navbar saveMixDialog={toggleSaveMixModal} />
         <div className="pages">

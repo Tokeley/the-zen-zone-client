@@ -16,8 +16,8 @@ const Favourites = () => {
   
   return (
     <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
-        <h1 className="text-4xl font-heading font-light text-center pb-2">Favourites</h1>
-        <div className="border-b border-w-full mx-7"></div>
+        <h1 className="text-4xl font-heading font-light text-center pb-2 text-gray">Favourites</h1>
+        <div className="border-b border-w-full mx-7 border-gray"></div>
         { isLoading ? 
           <div class="w-full flex justify-center items-center">
             <h2>Loading...</h2>
