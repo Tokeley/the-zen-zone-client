@@ -41,7 +41,7 @@ const Login = () => {
             Log in
           </button>
         </div>
-        <a href="signup"> Sign up</a>
+        <a href="signup" className="justify-center"> Sign up</a>
         
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </form>
