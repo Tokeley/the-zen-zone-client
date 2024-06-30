@@ -5,12 +5,17 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {login, error, isLoading} = useLogin()
+  const [showPasswordFirst, setShowPasswordFirst] = useState(false); 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     await login(email, password)
   }
+
+  const togglePasswordVisibility = () => {
+      setShowPasswordFirst(!showPasswordFirst);
+  };
 
   return (   
     <div className="flex items-center justify-center pt-20 ">
@@ -26,12 +31,21 @@ const Login = () => {
         />
 
         <label className="block text-gray text-sm font-bold mt-4 mb-2">Password:</label>
-        <input
-          type="password"
-          className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
+        <div className="relative">
+          <input
+            type={showPasswordFirst ? 'text' : 'password'}
+            className="border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <button
+            type="button"
+            className="absolute right-0 top-0 mt-3 mr-4 text-sm text-gray-500 cursor-pointer"
+            onClick={() => togglePasswordVisibility('first')}
+          >
+            {showPasswordFirst ? 'Hide' : 'Show'}
+          </button>
+        </div>
         <div className="flex items-center justify-center pt-5">
           <button
             className="custom-btn"
