@@ -94,12 +94,12 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
             <div className="h-full w-full flex flex-col items-center" style={backgroundStyle}>
             <div className="p-2 flex w-full h-20 items-center justify-between">
                 <div className=" items-center flex justify-center rounded-sm w-3/12 min-w-36">
-                  <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
+                  <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full bg-offwhite">
                     <h1 className='font-heading font-light text-darkGray text-xl'>{soundscape.title}</h1> 
                   </div>
                 </div>
                 <div className="h-12 items-center flex justify-center rounded-sm w-3/12 min-w-36">
-                    <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full"style={{backdropFilter: "blur(7px)"}}>
+                    <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full bg-offwhite" >
                       <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}  isMuted={isMuted}/> 
                     </div>
                 </div>

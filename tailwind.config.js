@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       colors: {
         cream: "#dbd7c7",
-        offwhite: "#E5E4E2",
+        offwhite: "#f5f5f4",
         gray: "#424242",
         lightGray: "#424242", 
         darkGray: "#424242"
