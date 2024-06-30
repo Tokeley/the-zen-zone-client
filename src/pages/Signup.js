@@ -83,6 +83,7 @@ const Signup = () => {
           > 
             Sign up
           </button>
+          <a href="login">Log in</a>
         </div>
         
         {noMatch && <div className="text-red-500 mt-2 text-center">Passwords do not match</div>}

@@ -40,6 +40,7 @@ const Login = () => {
           > 
             Log in
           </button>
+          <a href="signup"> Sign up</a>
         </div>
         
         
