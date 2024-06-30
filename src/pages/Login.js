@@ -41,8 +41,9 @@ const Login = () => {
             Log in
           </button>
         </div>
-        <a href="signup" className="justify-center"> Sign up</a>
-        
+        <div className="flex items-center justify-center pt-5">
+          <a href="signup" className="justify-center"> Sign up</a>
+        </div>
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </form>
     </div>
