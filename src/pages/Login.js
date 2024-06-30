@@ -40,9 +40,8 @@ const Login = () => {
           > 
             Log in
           </button>
-          <a href="signup"> Sign up</a>
         </div>
-        
+        <a href="signup"> Sign up</a>
         
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </form>

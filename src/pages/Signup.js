@@ -83,9 +83,8 @@ const Signup = () => {
           > 
             Sign up
           </button>
-          <a href="login">Log in</a>
         </div>
-        
+        <a href="login">Log in</a>
         {noMatch && <div className="text-red-500 mt-2 text-center">Passwords do not match</div>}
         {error && <div className="text-red-500 mt-2 text-center">{error}</div>}
       </form>
