@@ -94,7 +94,7 @@ function App() {
 
 
   return (
-    <div className="App text-gray border-gray" style={fullHeightStyle}>
+    <div className="App text-gray border-gray h-full" style={fullHeightStyle}>
       <BrowserRouter>
         <Navbar saveMixDialog={toggleSaveMixModal} />
         <div className="pages">
