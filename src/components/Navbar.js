@@ -11,10 +11,9 @@ import MobileNavbar from './MobileNavbar';
 import DesktopNavbar from './DesktopNavbar'; 
 
 
-const Navbar = ({saveMixDialog}) => {
+const Navbar = ({saveMixDialog, setPlaying, playing}) => {
   const { dispatch} = useNavbarHeightContext();
   const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
-  const [playing, setPlaying] = useState(true)
   
 
   let header = useRef(null);
@@ -23,9 +22,6 @@ const Navbar = ({saveMixDialog}) => {
     dispatch({type: 'SET_NAVBAR_HEIGHT', payload: header.current.offsetHeight});
   },[contextPlaying, dispatch ]);
 
-  useEffect(() => {
-    soundDispatch({type: 'SET_PLAYING', payload: !playing});
-  }, [playing])
 
   return (
     <header>

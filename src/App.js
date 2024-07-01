@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Facebook, WhatsApp, Pinterest, Twitter, TickThick } from './components/Icons';
 import { useAuthContext } from './hooks/useAuthContext';
@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import Mixes from './pages/Mixes';
 import { useMixContext } from './hooks/useMixContext'
 import { useUserMixesContext } from './hooks/useUserMixesContext';
+import { useSoundContext } from './hooks/useSoundContext';
 
 function App() {
   const { user } = useAuthContext();
@@ -25,6 +26,12 @@ function App() {
   const [shareLink, setShareLink] = useState('');
   const [shareMixName, setShareMixName] = useState('');
   const [copied, setCopied] = useState(false);
+  const [playing, setPlaying] = useState(true)
+  const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
+
+  useEffect(() => {
+    soundDispatch({type: 'SET_PLAYING', payload: !playing});
+  }, [playing])
 
   const toggleSaveMixModal = () => {
     setOpenSaveMix(!openSaveMix); // Toggles the modal state
@@ -96,10 +103,10 @@ function App() {
   return (
     <div className="App text-gray border-gray h-full">
       <BrowserRouter>
-        <Navbar saveMixDialog={toggleSaveMixModal} />
+        <Navbar saveMixDialog={toggleSaveMixModal} playing={playing} setPlaying={setPlaying} />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home playing={playing} setPlaying={setPlaying} />} />
             <Route path="/share/:encodedMix" element={<Home />} />
             <Route path="/soundscapes" element={<Soundscapes />} />
             <Route path="/favourites" element={user ? <Favourites /> : <Login />} />

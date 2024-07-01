@@ -6,7 +6,7 @@ import SoundscapeUnit from '../components/SoundscapeUnit'
 import { useParams } from 'react-router-dom';
 import { useGetMix } from '../hooks/useGetMix';
 
-const Home = () => {
+const Home = ({playing, setPlaying}) => {
   const { encodedMix } = useParams();
   const {user} = useAuthContext()
   const {mix} = useMixContext()
@@ -58,7 +58,7 @@ const Home = () => {
     <>
       <div  className={`text-darkGray ${isSmallScreen ? 'drop-shadow-xl' : ''}`} style={isSmallScreen ? {} : { display: "flex", width: "100%", height: `calc(100vh - ${navHeight}px)` }}>
           {mix && mix.map((soundscapeUnit) => (
-            <SoundscapeUnit key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} mobile={isSmallScreen} lastSoundscape={mix.length===1}style={{width: "100%"}}/>
+            <SoundscapeUnit key={soundscapeUnit.soundscape._id} soundscapeUnit={soundscapeUnit} mobile={isSmallScreen} lastSoundscape={mix.length===1}style={{width: "100%"}} playing={playing} setPlaying={setPlaying} />
           ))}
         </div>
     </>

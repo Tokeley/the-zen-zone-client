@@ -7,7 +7,7 @@ import '../style.css';
 import SoundscapeOptions from './SoundscapeOptions';
 import { useMixContext } from '../hooks/useMixContext'
 
-const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
+const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape, playing, setPlaying}) => {
     const soundscape = soundscapeUnit.soundscape
     const volumeInit = soundscapeUnit.volume
     const isMuted = soundscapeUnit.isMuted
@@ -85,7 +85,7 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
                     />
                 </div>
                 <div className="h-16  border-2 items-center flex justify-center rounded-sm w-full" style={{backdropFilter: "blur(7px)"}}>
-                  <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape} isMuted={isMuted}/> 
+                  <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape} isMuted={isMuted} playing={playing} setPlaying={setPlaying} /> 
                 </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ const SoundscapeUnit = ({ soundscapeUnit, mobile, lastSoundscape }) => {
                 </div>
                 <div className="h-12 items-center flex justify-center rounded-sm w-3/12 min-w-36">
                     <div className="h-16 border-2 border-darkGray items-center flex justify-center rounded-sm w-full bg-offwhite" >
-                      <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}  isMuted={isMuted}/> 
+                      <SoundscapeOptions soundscape = {soundscape} play = {play} pause={pause} removeSoundscape={removeSoundscape}  isMuted={isMuted} playing={playing} setPlaying={setPlaying} /> 
                     </div>
                 </div>
             </div>

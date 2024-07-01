@@ -8,7 +8,7 @@ import { useFavouritesContext } from '../hooks/useFavouritesContext';
 import { useMixContext } from '../hooks/useMixContext';
 
 
-const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}) => {
+const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted, playing: otherPlaying, setPlaying}) => {
     const [ thisPlaying, setThisPlaying ] = useState(!isMuted);
     const { playing, dispatch: soundDispatch } = useSoundContext();
     const { user } = useAuthContext();
@@ -24,7 +24,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}
     // Adds sounscape to user favourites field in database
     const addSoundScapeToFavourites = () => {
         if (!user){
-            soundDispatch({type: 'SET_PLAYING', payload: false});
+            setPlaying(!otherPlaying)
             navigate("/login")
         }
         else{
