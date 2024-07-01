@@ -8,23 +8,3 @@
 .custom-btn {
     @apply  py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider border-2 border-gray hover:bg-white hover:text-lightGray  transition ease-out duration-500;
 }
-
-:root {
-    --background-color: #eeeeee;
-  }
-  
-  body {
-    background-color: var(--background-color) !important;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background-color: #eeeeee;
-    }
-  }
-
-  #root {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
