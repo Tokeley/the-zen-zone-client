@@ -25,7 +25,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     const addSoundScapeToFavourites = () => {
         if (!user){
             setPlaying(true)
-            navigate("/login")
+            navigate("/signup")
         }
         else{
             asyncAddSoundScapeToFavourites()
