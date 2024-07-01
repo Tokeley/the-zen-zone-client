@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSignup } from '../hooks/useSignup';
+import { useSoundContext } from '../hooks/useSoundContext';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +10,11 @@ const Signup = () => {
   const [showPasswordFirst, setShowPasswordFirst] = useState(false); // State to toggle password visibility
   const [showPasswordSecond, setShowPasswordSecond] = useState(false); // State to toggle password visibility
   const {signup, error, isLoading} = useSignup();
+  const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
 
+  useEffect(() => {
+    soundDispatch({type: 'SET_PLAYING', payload: false});
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (passwordSecond !== passwordFirst) {

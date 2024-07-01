@@ -41,7 +41,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Removes sounscape from user favourites field in database
     const removeSoundScapeFromFavourites = async () => {
         if (!user){
-            setPlaying(!otherPlaying)
+            soundDispatch({type: 'SET_PLAYING', payload: !playing});
             navigate("/signup")
         }
         setFavourited(false)
