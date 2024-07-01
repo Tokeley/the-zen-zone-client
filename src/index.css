@@ -22,3 +22,9 @@
       --background-color: #eeeeee;
     }
   }
+
+  #root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }

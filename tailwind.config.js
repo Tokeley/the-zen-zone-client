@@ -13,10 +13,10 @@ module.exports = {
     extend: {
       colors: {
         cream: "#dbd7c7",
-        offwhite: "#f5f5f4",
-        gray: "#e2e2e2",
-        lightGray: "#e2e2e2", 
-        darkGray: "#e2e2e2"
+        offwhite: "#e0e0e0",
+        gray: "#424242",
+        lightGray: "#424242", 
+        darkGray: "#424242"
       },
       fontFamily: {
         titleFont: ['Cormorant'],

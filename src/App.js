@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Mixes from './pages/Mixes';
+import { useMixContext } from './hooks/useMixContext'
 import { useUserMixesContext } from './hooks/useUserMixesContext';
 
 function App() {
@@ -84,8 +85,16 @@ function App() {
     window.open(url, '_blank');
   };
 
+  const fullHeightStyle = {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#eeeeee',
+  };
+
+
   return (
-    <div className="App text-gray border-gray">
+    <div className="App text-gray border-gray" style={fullHeightStyle}>
       <BrowserRouter>
         <Navbar saveMixDialog={toggleSaveMixModal} />
         <div className="pages">
