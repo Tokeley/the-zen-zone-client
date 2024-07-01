@@ -24,9 +24,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Adds sounscape to user favourites field in database
     const addSoundScapeToFavourites = () => {
         if (!user){
-            soundDispatch({type: 'SET_PLAYING', payload: !playing});
-            //setPlaying(!otherPlaying)
-            navigate("/signup")
+
         }
         else{
             asyncAddSoundScapeToFavourites()
@@ -41,11 +39,11 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Removes sounscape from user favourites field in database
     const removeSoundScapeFromFavourites = async () => {
         if (!user){
-            soundDispatch({type: 'SET_PLAYING', payload: !playing});
-            navigate("/signup")
+
+        } else {
+            setFavourited(false)
+            await removeFavourite(soundscape._id)
         }
-        setFavourited(false)
-        await removeFavourite(soundscape._id)
     }
     
     useEffect(() => {
