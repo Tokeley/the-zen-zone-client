@@ -24,7 +24,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Adds sounscape to user favourites field in database
     const addSoundScapeToFavourites = () => {
         if (!user){
-            setPlaying(false)
+            setPlaying(true)
             navigate("/login")
         }
         else{
@@ -40,7 +40,6 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Removes sounscape from user favourites field in database
     const removeSoundScapeFromFavourites = async () => {
         if (!user){
-            soundDispatch({type: 'SET_PLAYING', payload: false});
             navigate("/login")
         }
         setFavourited(false)
@@ -58,7 +57,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
         } else {
             pause()
         }
-    },[thisPlaying, playing, otherPlaying]);
+    },[thisPlaying, playing]);
 
     const iconSize = 40;
 
