@@ -6,18 +6,16 @@ import { SoundOn, SoundOff, Xmark, EmptyFavIcon, FullFavIcon } from './Icons';
 import { useNavigate } from "react-router-dom";
 import { useFavouritesContext } from '../hooks/useFavouritesContext';
 import { useMixContext } from '../hooks/useMixContext';
-import { useSoundContext } from '../hooks/useSoundContext';
 
 
 const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted}) => {
     const [ thisPlaying, setThisPlaying ] = useState(!isMuted);
-    const { playing } = useSoundContext();
+    const { playing, dispatch: soundDispatch } = useSoundContext();
     const { user } = useAuthContext();
     const navigate = useNavigate();
     const [favourited, setFavourited] = useState(false)
     const { favourites, addFavourite, removeFavourite } = useFavouritesContext()
     const {changeIsMuted} = useMixContext()
-    const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
 
     useEffect(() => {
         setFavourited(favourites.some(item => item._id == soundscape._id))
