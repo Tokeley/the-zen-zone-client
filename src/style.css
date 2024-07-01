@@ -143,3 +143,17 @@
 .navbar.is-open {
   max-height: 100%;
 }
+
+:root {
+  --background-color: #eeeeee;
+}
+
+body {
+  background-color: var(--background-color) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #eeeeee;
+  }
+}

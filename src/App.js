@@ -10,8 +10,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Mixes from './pages/Mixes';
-import { useMixContext } from './hooks/useMixContext';
-import { useAddMix } from './hooks/useAddMix';
 import { useUserMixesContext } from './hooks/useUserMixesContext';
 
 function App() {
