@@ -24,7 +24,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Adds sounscape to user favourites field in database
     const addSoundScapeToFavourites = () => {
         if (!user){
-            setPlaying(!otherPlaying)
+            setPlaying(false)
             navigate("/login")
         }
         else{
@@ -58,7 +58,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
         } else {
             pause()
         }
-    },[thisPlaying, playing]);
+    },[thisPlaying, playing, otherPlaying]);
 
     const iconSize = 40;
 

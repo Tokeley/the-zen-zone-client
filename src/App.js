@@ -30,6 +30,7 @@ function App() {
   const { playing: contextPlaying, dispatch: soundDispatch } = useSoundContext();
 
   useEffect(() => {
+    console.log('STOP ')
     soundDispatch({type: 'SET_PLAYING', payload: !playing});
   }, [playing])
 
