@@ -40,7 +40,8 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     // Removes sounscape from user favourites field in database
     const removeSoundScapeFromFavourites = async () => {
         if (!user){
-            navigate("/login")
+            setPlaying(true)
+            navigate("/signup")
         }
         setFavourited(false)
         await removeFavourite(soundscape._id)
@@ -61,11 +62,6 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
 
     const iconSize = 40;
 
-    const handleFavClick = () => {
-        if (!user){
-            navigate("/login");
-        }
-    }
 
     const handleMuteClick = () => {
         setThisPlaying(!thisPlaying)
@@ -73,7 +69,7 @@ const SoundscapeOptions = ({ soundscape, play, pause, removeSoundscape, isMuted,
     }
   return (
     <div className="flex justify-between w-full px-2 md:px-6">
-        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 "  onClick={handleFavClick}>
+        <div className="flex justify-center items-center bg-gray-200 rounded-lg hover:cursor-pointer hover:scale-110 transition-transform duration-300 ">
             {favourited 
             ? (
                 <div onClick={removeSoundScapeFromFavourites}>
