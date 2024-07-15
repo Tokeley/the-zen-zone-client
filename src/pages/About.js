@@ -29,6 +29,10 @@ const About = () => {
         <p className="mt-7">
           I hope you enjoy the soundscapes as much as I do and that they can transport you to another world of focus and peace. 
         </p>
+        <div className="flex justify-center mt-10">
+          <img src="../images/mic_drawing.png" alt="Microphone" className="h-40 w-auto"/>
+        </div>
+
       </div>
     </div>
     
