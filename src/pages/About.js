@@ -39,7 +39,7 @@ const About = () => {
           I hope you enjoy the soundscapes as much as I do and that they can transport you to another world of focus and peace. 
         </p>
         <div className="flex justify-center mt-10">
-         <img src={imageUrl} alt="Girl in a jacket" width="500" height="600"></img>
+         <img src={imageUrl} alt="Girl in a jacket" width="250" height="300"></img>
         </div>
 
       </div>
