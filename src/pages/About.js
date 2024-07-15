@@ -6,8 +6,9 @@ const About = () => {
     <div className="flex-col items-center mx-auto max-w-screen-page-width mt-4">
       <h1 className="text-4xl font-heading font-light text-center pb-2 text-gray">About</h1>
       <div className="border-b border-w-full mx-7 border-gray"></div>
-      <div className="mx-20">
-        <p>
+      <div className="mx-32">
+
+        <p className="mt-7">
         “There is no such thing as an empty space or an empty time. There is always something to see, something to hear. In fact, try as we may to make a silence, we cannot.” ― John Cage
         </p>
         <p className="mt-7">
