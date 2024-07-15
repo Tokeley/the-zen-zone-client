@@ -30,7 +30,11 @@ Let an array of soundscapes transport you from your office or classroom to a com
 ## Installation and Usage
 
 1. Clone this repo
-2. 
+2. Clone the server repo found [here](https://github.com/Tokeley/the-zen-zone-server)
+3. Navigate to the server root directory and run `npm i` to install dependencies
+4. Run `npm start` to start the server
+5. Navigate to the client root directory and run `npm i` to install dependencies
+6. Run `npm start` to start the client 
 
 ## What I Learned
 **Full-Stack Development with MERN:** Gained hands-on experience in developing a full-stack application using MongoDB, ExpressJS, React, and NodeJS.
