@@ -25,6 +25,7 @@ Let an array of soundscapes transport you from your office or classroom to a com
 
 ## Demo
 
+![The Zen Zone Demo](ZenZoneDemo.gif)
 
 ## Installation and Usage
 
