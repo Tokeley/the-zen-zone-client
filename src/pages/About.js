@@ -39,7 +39,7 @@ const About = () => {
           I hope you enjoy the soundscapes as much as I do and that they can transport you to another world of focus and peace. 
         </p>
         <div className="flex justify-center mt-10">
-        <div className="w-64 h-48 border-2 border-darkGray" style={micImage}> </div>
+        <div className="" style={micImage}> </div>
         </div>
 
       </div>
