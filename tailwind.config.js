@@ -17,7 +17,7 @@ module.exports = {
         gray: "#424242",
         lightGray: "#424242", 
         darkGray: "#424242",
-        nicewhite: "eeeeee"
+        nicewhite: "#eeeeee"
       },
       fontFamily: {
         titleFont: ['Cormorant'],
