@@ -16,25 +16,34 @@ const About = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(formData));
-    
-    // Process form data here (e.g., send to a server)
-
-    setSuccess(true);
-    
-    // Reset the form data
-    setFormData({
-      name: '',
-      email: '',
-      feedbackType: '',
-      feedback: '',
-    });
-
-    // Optionally, clear the success message after a short delay
-    setTimeout(() => {
-      setSuccess(false);
-    }, 3000); // Adjust the timeout duration as needed
+    try {
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        setSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          feedbackType: '',
+          feedback: '',
+        });
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
+      } else {
+        console.error('Feedback submission failed.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+  
 
   const handleRadioChange = (e) => {
     setFormData({ ...formData, feedbackType: e.target.value });
