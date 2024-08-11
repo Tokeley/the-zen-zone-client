@@ -20,7 +20,7 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     const location = useLocation();
 
     const startSilenceAudio = () => {
-        audio.play()
+        silentAudio.play()
       }
 
       
