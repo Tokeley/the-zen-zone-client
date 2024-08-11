@@ -9,7 +9,7 @@ import { useMixContext } from '../hooks/useMixContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
-
+    let silentAudio = new Audio("../soundscapes/silence.mp3")
     const { logout } = useLogout();
     const { user } = useAuthContext();
     const { dispatch} = useNavbarHeightContext();
@@ -19,6 +19,11 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     const navigate = useNavigate(); 
     const location = useLocation();
 
+    const startSilenceAudio = () => {
+        audio.play()
+      }
+
+      
     const handleLogout = () => {
         logout()
     }
@@ -29,9 +34,9 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     }
 
     const handlePlayButtonClick = () => {
-        console.log(location.pa)
         if (location.pathname === '/') {
-          setPlaying(!playing);
+            startSilenceAudio();
+            setPlaying(!playing);
         } else {
           navigate('/');
         }

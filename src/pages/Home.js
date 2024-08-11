@@ -24,7 +24,6 @@ const Home = ({playing, setPlaying}) => {
         try {
           const decodedMix = atob(encodedMix)
           const response = await getMix(decodedMix)
-          console.log(response)
           const mixFull = response
           const mix = mixFull.mix
           console.log("MIX: " + mix) 
