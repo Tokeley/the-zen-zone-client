@@ -1,14 +1,22 @@
-import React from 'react'
-import { useFavouritesContext } from '../hooks/useFavouritesContext';
+import React, { useState } from 'react';
 
 const About = () => {
 
   const imageUrl= require(`../images/mic_drawing.png`);
 
-  const micImage = {
-    backgroundImage: `url(${imageUrl})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    feedbackType: '',
+    feeback: '',
+  });
+
+  const handleSubmit = () => {
+    console.log(JSON.stringify(formData));
+  }
+
+  const handleRadioChange = (e) => {
+    setFormData({ ...formData, feedbackType: e.target.value });
   };
 
   return (
@@ -45,6 +53,77 @@ const About = () => {
          <img src={imageUrl} alt="Girl in a jacket" width="250" height="300"></img>
         </div>
 
+      </div>
+
+      <h1 className="text-4xl font-heading font-light text-center pb-2 text-gray">Feedback</h1>
+      <div className="border-b border-w-full  border-gray"></div>
+
+      <div className="sm:mx-32 mx-8">
+        <form className="" onSubmit={handleSubmit}>
+          <div className="m-6"></div>
+          <label className="block text-gray text-sm font-bold mb-2">Name:</label>
+          <input
+            className="border bg-white w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+          <div className="m-6"></div>
+
+          <label className="block text-gray text-sm font-bold mb-2">Email:</label>
+          <input
+            className="border bg-white w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+          <div className="m-6"></div>
+
+          <label className="block text-gray text-sm font-bold mb-2">Type:</label>
+          <div className="flex flex-col sm:flex-row justify-between mt-4 space-y-4 sm:space-y-0 sm:space-x-4">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value="Soundscape Request"
+                checked={formData.feedbackType === 'Soundscape Request'}
+                onChange={handleRadioChange}
+                className="form-radio h-5 w-5 text-gray-600"
+              />
+              <span className="ml-2 text-gray-700">Soundscape Request</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value="Website Feedback"
+                checked={formData.feedbackType === 'Website Feedback'}
+                onChange={handleRadioChange}
+                className="form-radio h-5 w-5 text-gray-600"
+              />
+              <span className="ml-2 text-gray-700">Website Feedback</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value="Other"
+                checked={formData.feedbackType === 'Other'}
+                onChange={handleRadioChange}
+                className="form-radio h-5 w-5 text-gray-600"
+              />
+              <span className="ml-2 text-gray-700">Other</span>
+            </label>
+          </div>
+
+          <div className="m-6"></div>
+
+          <label className="block text-gray text-sm font-bold mb-2">Feedback:</label>
+          <textarea
+            className="border bg-white w-full h-32 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            onChange={(e) => setFormData({ ...formData, feedback: e.target.value })}
+          />
+
+
+          <div className="flex items-center justify-center pt-5">
+            <button className="custom-btn" type="submit">
+              Submit Feedback
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     
