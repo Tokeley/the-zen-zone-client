@@ -7,9 +7,11 @@ import { useSoundContext } from '../hooks/useSoundContext';
 import { PlayIcon, PauseIcon, EmptyFavIcon, SparkleIcon, QuestionIcon, Burger, Xmark, MixIcon } from './Icons';
 import { useMixContext } from '../hooks/useMixContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import birdsSound from '../soundscapes/silence.mp3';
 
 const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
-    let silentAudio = new Audio("../soundscapes/silence.mp3")
+    let silentAudio = new Audio(birdsSound)
+    silentAudio.volume = 0;
     const { logout } = useLogout();
     const { user } = useAuthContext();
     const { dispatch} = useNavbarHeightContext();
@@ -20,8 +22,9 @@ const MobileNavbar = ({saveMixDialog, setPlaying, playing}) => {
     const location = useLocation();
 
     const startSilenceAudio = () => {
-        silentAudio.play()
-      }
+        silentAudio.pause();
+        silentAudio.play(); 
+    }
 
       
     const handleLogout = () => {
